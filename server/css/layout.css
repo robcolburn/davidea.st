@@ -1,0 +1,23 @@
+.de-grid {
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 40px;
+  padding: 0 20px;
+}
+
+.de-grid p, section {
+  margin: 20px 0;
+}
+
+.de-grid article {
+  margin: 20px 0 40px 0;
+}
+
+.de-grid section h3 + p, .de-article-content-top {
+  margin: 0px 0px 20px 0px;
+}
+
+.de-article-content-first-line {
+  font-size: 24px;
+}

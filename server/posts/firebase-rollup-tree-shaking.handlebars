@@ -1,0 +1,144 @@
+<section class="fir-article-content">
+  <h1>Firebase & Rollup</h1>
+  
+  <p class="fir-article-content-first-line">
+    I have a new best practice for importing Firebase:
+  </p>
+
+  <h3>Never do this again</h3>
+  <pre class="fir-codebox language-javascript"><code class=" language-javascript"><span class="token keyword">import</span> <span class="token operator">*</span> <span class="token keyword">as</span> firebase <span class="token keyword">from</span> <span class="token string">'firebase'</span><span class="token punctuation">;</span></code></pre>
+  <p>
+    This one-liner includes every feature of Firebase by default. Which is as of version 3.6.6 is <strong>96.7kb</strong>.
+    This single asset on average loads in <strong>1.1 seconds</strong> on "Regular 3G" in the Network panel in Chrome.
+  </p>
+  <p>
+    Fortunately, it doesn't have to be this way. With the help of Rollup, we can easily import only the features we need.
+  </p>
+</section>
+<section class="fir-article-content">
+  <h3>Do this instead</h3>
+  <pre class="fir-codebox language-javascript"><code class=" language-javascript">import * as firebase from 'firebase/app';</code></pre>
+
+  <p>
+    This statement imports only the <code>firebase.app</code> code, which is a small container that houses all Firebase features.
+    It's
+    <strong>6.1kb</strong> and on "Regular 3G" loads in around 180ms.
+  </p>
+
+</section>
+<section class="fir-article-content">
+  <h3>Naked import the features you need</h3>
+  <pre class="fir-codebox language-javascript"><code class="language-javascript">import * as firebase from 'firebase/app';
+import 'firebase/storage';
+// your code goes below
+// make sure to use firebase.initializeApp()
+</code></pre>
+</section>
+
+<section class="fir-article-content">
+  <h3>Install Rollup</h3>
+  <p class="fir-article-content-top">
+    Rollup uses ES2015 modules to tree shake unneeded code from your final bundle.
+  </p>
+  <pre class="fir-codebox"><code class="language-javascript">npm i --save-dev rollup</code></pre>
+</section>
+
+<section class="fir-article-content">
+  <h3>Resolving the Firebase node module</h3>
+
+  <p>
+    Rollup works only with ES2015 modules. This isn't going to cut it with the commonjs Firebase node module.
+  </p>
+  <p>
+    Fortunately, there are two excellent Rollup plugins to help. There's
+    <a href="https://github.com/rollup/rollup-plugin-node-resolve">
+      <code>rollup-plugin-node-resolve</code>
+    </a>
+    which tells Rollup to look in the <code>node_modules</code> folder, and
+    <a href="https://github.com/rollup/rollup-plugin-commonjs">
+      <code>rollup-plugin-commonjs</code>
+      <a/> which converts commonjs modules to ES2015 modules.
+  </p>
+  <p>
+    Install these modules, and then you'll write your config.
+  </p>
+  <pre class="fir-codebox"><code class="language-javascript">npm i --save-dev rollup-plugin-node-resolve rollup-plugin-commonjs</code></pre>
+</section>
+
+<section class="fir-article-content">
+  <h3>Rollup Config</h3>
+  <p class="fir-article-content-top">
+    Declare the plugins, and set your entry file, and output file.
+  </p>
+
+<pre><code class="language-javascript">const rollup = require('rollup');
+const fs = require('fs');
+const commonjs = require('rollup-plugin-commonjs');
+const nodeResolve = require('rollup-plugin-node-resolve');
+
+rollup.rollup({
+  entry: 'dist/index.js',
+  plugins: [
+    nodeResolve({
+      jsnext: true,
+      main: true
+    }),
+    commonjs({
+      include: 'node_modules/**'
+    })
+  ]
+}).then((bundle) => {
+  const result = bundle.generate({
+    format: 'umd',
+    moduleName: 'app'
+  });
+
+  return bundle.write({
+    format: 'umd',
+    dest: 'public/index.js',
+    moduleName: 'app'
+  });
+});</code></pre>
+
+</section>
+
+<section class="fir-article-content">
+  <h3>Pro-tip: Measure the size</h3>
+  <p class="fir-article-content-top">
+    There's two nifty node modules you can use to log the gzipped size of the bundle after the build: <code>gzip-size</code>    and
+    <code>pretty-size</code>.
+  </p>
+
+  <pre class="fir-codebox"><code class="language-javascript">npm i --save-dev gzip-size pretty-size</code></pre>
+
+  <p>
+    Require them at the top of the config and then create another chain onto the promise.
+  </p>
+
+  <pre><code class="language-javascript"> // continuing the snippet above
+  return bundle.write({
+    format: 'umd',
+    dest: 'public/index.js',
+    moduleName: 'app'
+  });
+}).then(_ => {
+  const file = fs.readFileSync('public/index.js');
+  const bytes = gzipSize.sync(file);
+  console.log(`firebase.app & firebase.storage: ${psize(bytes, true)} gzipped`);
+});</code></pre>
+
+</section>
+
+<p>
+  Now you can keep track of your bundle size as you build.
+</p>
+
+<pre class="fir-codebox"><code class="language-javascript">firebase.app & firebase.storage: 15.7 kB gzipped</code></pre>
+
+<section class="fir-article-content">
+  <h3>Github sample repo</h3>
+  <p class="fir-article-content-top">
+    Check out <a href="https://github.com/davideast/firebase-typescript-rollup">
+            this github repo for a sample</a>. It uses TypeScript, but the idea is the same.
+  </p>
+</section>
