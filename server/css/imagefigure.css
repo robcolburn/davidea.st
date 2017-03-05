@@ -1,5 +1,5 @@
 .de-image-figure {
-  margin: 0;
+  margin: 0 10px;
   display: flex;
   align-items: center;
   position: relative;
@@ -23,9 +23,14 @@ html.wf-active .de-image-figure .fig-author-figure-title {
   margin-top: 2px;
 }
 
-.fig-author-figure-title-header {
+.fig-author-figure-title-header a {
   color: var(--de-color-grey);
   font-size: 28px;
+  text-decoration: none;
+}
+
+.fig-author-figure-title-header a:hover {
+  text-decoration: underline;
 }
 
 .de-imageover {

@@ -13,13 +13,14 @@ const cssFiles = [
   '/css/clickcircle.css',
   '/css/imagefigure.css',
   '/css/headline.css',
-  '/css/pill.css'
+  '/css/pill.css',
+  '/css/article.css'
 ].map(file => __dirname + file);
 
 app.get('/', function (req, res) {
   const indexHtml = fs.readFileSync(__dirname + '/templates/_index.ejs').toString('utf8');
   const styles = embedCss(cssFiles);
-  const html = ejs.render(indexHtml, { styles });
+  const html = ejs.render(indexHtml, { styles, __dirname });
   res.send(html);
 });
 

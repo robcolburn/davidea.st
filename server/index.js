@@ -13,12 +13,13 @@ var cssFiles = [
     '/css/clickcircle.css',
     '/css/imagefigure.css',
     '/css/headline.css',
-    '/css/pill.css'
+    '/css/pill.css',
+    '/css/article.css'
 ].map(function (file) { return __dirname + file; });
 app.get('/', function (req, res) {
     var indexHtml = fs.readFileSync(__dirname + '/templates/_index.ejs').toString('utf8');
     var styles = embedcss_1.embedCss(cssFiles);
-    var html = ejs.render(indexHtml, { styles: styles });
+    var html = ejs.render(indexHtml, { styles: styles, __dirname: __dirname });
     res.send(html);
 });
 app.get('/posts/:title', function (req, res) {

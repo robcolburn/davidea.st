@@ -7,69 +7,21 @@
   </head>
   <body>
 
-    <header class="de-header de-padding">
-      
-      <div class="de-grid">
-
-        <figure class="de-image-figure">
-
-          <a class="de-imageover" rel="noopener" target="_blank" href="https://twitter.com/_davideast">
-            <img class="de-author-image de-clickcircle" src="assets/de-sm.jpg" alt="David East - Author">
-            <div class="de-imageover-color"></div>
-            <img class="de-imageover-image de-clickcircle" src="assets/twitter-logo.png" />
-          </a>
-
-          <figcaption>
-            <div class="fig-author-figure-title-header">davidea.st</div>
-            <div class="fig-author-figure-title">Web development, Firebase, and design articles</div>
-          </figcaption>
-        </figure>
-
-      </div>
-
-    </header>
+    <%- include(__dirname + '/templates/_header'); %>
 
     <div class="de-grid de-row-double de-padding">
-      <div class="de-headline">
-        <h4 class="de-headline-date">March 4th, 2017</h4>
-        <h2 class="de-headline-title">Create smaller bundles with Firebase and Rollup</h2>
-        <div class="de-pill-box">
-          <div class="de-pill de-pill-firebase">
-            <a href="#">Firebase</a>
-          </div>
-          <div class="de-pill de-pill-offbrand">
-            <a href="#">Rollup</a>
-          </div>
-        </div>
 
-        <h3 class="de-headline-whyread de-row">Why Read?</h3>
-        <p class="de-headline-whyread-content">
-          Rollup is a special JavaScript bundles that uses ES2015 modules to tree shake uneeded code. Which leads to smaller bundles. Creating smaller bundles means faster page load times. Plus, there’s some super cool new syntax to learn.
-        </p>
-        <a class="de-headline-readmore" href="#">Read More.</a>
+      <%- include(__dirname + '/templates/_headline'); %>
+
+      <div class="articlelist">
+
+        <%- include(__dirname + '/templates/_article'); %>         
+
       </div>
     </div>
+    
+    <%- include(__dirname + '/templates/_footer'); %> 
 
-    <footer>
-      <div>
-        &#10803; David East
-      </div>
-      <div>
-        <a href="https://twitter.com/_davideast">Twitter</a>
-        &#8212;
-        <a href="https://github.com/davideast">Github</a>
-      </div>
-    </footer>
-
-    <script defer>
-      (function(d) {
-        var config = {
-          kitId: 'sak5ekz',
-          scriptTimeout: 3000,
-          async: true
-        },
-        h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
-      })(document);
-    </script>
+    <link href="https://fonts.googleapis.com/css?family=Lato:700|Source+Sans+Pro:300,400" rel="stylesheet">
   </body>
 </html>

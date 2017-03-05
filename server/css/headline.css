@@ -1,6 +1,19 @@
 .de-headline {
   border-bottom: 1px solid var(--de-color-lightgrey);
-  padding-bottom: 30px;  
+  padding-bottom: 60px;  
+}
+
+.de-headline-title {
+  padding: 10px 0;
+}
+
+.de-headline-title a {
+  color: var(--de-color-offblack);
+  text-decoration: none;
+}
+
+.de-headline-title a:hover {
+  border-bottom: 1px solid var(--de-color-lightgrey);
 }
 
 .de-headline-date {
