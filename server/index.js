@@ -11,7 +11,9 @@ var cssFiles = [
     '/css/base.css',
     '/css/layout.css',
     '/css/clickcircle.css',
-    '/css/imagefigure.css'
+    '/css/imagefigure.css',
+    '/css/headline.css',
+    '/css/pill.css'
 ].map(function (file) { return __dirname + file; });
 app.get('/', function (req, res) {
     var indexHtml = fs.readFileSync(__dirname + '/templates/_index.ejs').toString('utf8');

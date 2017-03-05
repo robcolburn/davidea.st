@@ -1,0 +1,36 @@
+.de-pillbox {
+
+}
+
+.de-pill {
+  border-radius: 6px;
+  display: inline-block;
+  width: 80px; 
+}
+
+.de-pill a {
+  align-items: center;  
+  display: flex;
+  font-size: 12px;  
+  height: 20px;  
+  justify-content: center;
+  text-decoration: none;
+  width: 80px;  
+}
+
+.de-pill.de-pill-firebase {
+  background-color: var(--de-color-blue-firebase);  
+}
+
+.de-pill.de-pill.de-pill-firebase a {
+  color: var(--de-color-white);
+}
+
+.de-pill.de-pill-offbrand {
+  background-color: var(--de-color-white);  
+  border: 1px solid var(--de-color-grey);
+}
+
+.de-pill.de-pill.de-pill-offbrand a {
+  color: var(--de-color-grey);
+}

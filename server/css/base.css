@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: var(--de-font-article);
   margin: 0;
@@ -5,9 +9,13 @@ body {
 h1 {
   font-size: 2.3em;
 }
-h1, h2, h3 {
-  font-family: var(--de-font-header);
+h1, h2, h3, h4, h5 {
+  font-family: var(--de-font-article);
+  font-weight: lighter;
   margin: 0;
+}
+h2 {
+  font-size: 36px;
 }
 article {
   font-size: 19px;

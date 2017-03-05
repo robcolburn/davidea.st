@@ -11,7 +11,9 @@ const cssFiles = [
   '/css/base.css',
   '/css/layout.css',
   '/css/clickcircle.css',
-  '/css/imagefigure.css'
+  '/css/imagefigure.css',
+  '/css/headline.css',
+  '/css/pill.css'
 ].map(file => __dirname + file);
 
 app.get('/', function (req, res) {

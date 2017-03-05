@@ -1,0 +1,17 @@
+.de-headline {
+  border-bottom: 1px solid var(--de-color-lightgrey);
+  padding-bottom: 30px;  
+}
+
+.de-headline-date {
+  font-family: var(--de-font-header);
+}
+
+.de-headline-whyread {
+  font-family: var(--de-font-header);
+  font-size: 24px;
+}
+
+.de-headline-whyread-content {
+  font-size: 18px;
+}

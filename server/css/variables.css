@@ -1,8 +1,11 @@
 :root {
   --de-font-article: "source-sans-pro", Arial;
   --de-font-header: "foco", Helvetica;  
-  --de-blue-twitter-alpha: rgba(85,172,238, 0.6);
+  --de-blue-twitter-alpha: rgba(85,172,238, .6);
+  --de-color-blue-firebase: rgba(3, 159, 229, 1);
   --de-color-grey: rgba(0,0,0, 0.40);
+  --de-color-lightgrey: rgba(223, 223, 223, 1);
+  --de-color-white: rgba(255, 255, 255, 1);
   --prism-bg: #28323F;
   --prism-text: #f2f3f7;
   --prism-comment: #7389a6;

@@ -7,9 +7,9 @@
   </head>
   <body>
 
-    <div class="de-grid">
+    <header class="de-header de-padding">
       
-      <div class="de-article-title">
+      <div class="de-grid">
 
         <figure class="de-image-figure">
 
@@ -27,6 +27,27 @@
 
       </div>
 
+    </header>
+
+    <div class="de-grid de-row-double de-padding">
+      <div class="de-headline">
+        <h4 class="de-headline-date">March 4th, 2017</h4>
+        <h2 class="de-headline-title">Create smaller bundles with Firebase and Rollup</h2>
+        <div class="de-pill-box">
+          <div class="de-pill de-pill-firebase">
+            <a href="#">Firebase</a>
+          </div>
+          <div class="de-pill de-pill-offbrand">
+            <a href="#">Rollup</a>
+          </div>
+        </div>
+
+        <h3 class="de-headline-whyread de-row">Why Read?</h3>
+        <p class="de-headline-whyread-content">
+          Rollup is a special JavaScript bundles that uses ES2015 modules to tree shake uneeded code. Which leads to smaller bundles. Creating smaller bundles means faster page load times. Plus, there’s some super cool new syntax to learn.
+        </p>
+        <a class="de-headline-readmore" href="#">Read More.</a>
+      </div>
     </div>
 
     <footer>
@@ -40,7 +61,15 @@
       </div>
     </footer>
 
-    <script src="https://use.typekit.net/sak5ekz.js"></script>
-    <script>try{Typekit.load({ async: true });}catch(e){}</script>
+    <script defer>
+      (function(d) {
+        var config = {
+          kitId: 'sak5ekz',
+          scriptTimeout: 3000,
+          async: true
+        },
+        h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+      })(document);
+    </script>
   </body>
 </html>
