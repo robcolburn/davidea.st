@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>davidea.st -  Web Development Articles </title>
+    <title>davidea.st - Web Development Articles </title>
     <style><%- styles %> /**/</style>
   </head>
   <body>
@@ -11,11 +11,14 @@
 
     <div class="de-grid de-row-double de-padding">
 
-      <%- include(__dirname + '/templates/_headline'); %>
+      <%- include(__dirname + '/templates/_headline', { post: headlinePost }); %>
 
       <div class="articlelist">
+        <% articles.forEach(function(post){ %>
 
-        <%- include(__dirname + '/templates/_article'); %>         
+        <%- include(__dirname + '/templates/_article', { post }); %>   
+
+        <% }); %>      
 
       </div>
     </div>
