@@ -1,3 +1,7 @@
+import * as admin from 'firebase-admin';
+
+export type AdminApp = admin.app.App;
+export type DataSnapshot = admin.database.DataSnapshot;
 
 export interface Post {
   key?: string;
@@ -10,4 +14,8 @@ export interface Post {
   whyRead: string;
   pagePath: string;
   timestamp?: number;
+}
+
+export interface TypedSnapshot<T> extends DataSnapshot {
+  val: () => T;
 }

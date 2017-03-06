@@ -8,10 +8,6 @@
   margin: 20px 0;
 }
 
-.de-grid article {
-  margin: 20px 0 40px 0;
-}
-
 .de-grid section h3 + p, .de-article-content-top {
   margin: 0px 20px;
 }

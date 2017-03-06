@@ -7,18 +7,10 @@ import * as posts from './build/posts';
 import { Post } from './interfaces';
 import { defaultFiles } from './build/cssfiles';
 import { embedCss } from './build/embedcss';
+import * as utils from './build/utils';
 
 const app = express();
 app.use('/assets', express.static(__dirname + '/assets'));
-
-function readFile(path: string): Promise<string> {
-  return new Promise((resolve, reject) => {
-    fs.readFile(path, 'utf8', (err, data) => {
-      if(err) { reject(err); }
-      resolve(data);
-    });
-  });
-}
 
 const serviceAccount = require('./firebase-sa.json');
 
@@ -28,7 +20,7 @@ const adminApp = admin.initializeApp({
 });
 
 app.get('/', async function (req, res) {
-  const indexHtml = await readFile(__dirname + '/templates/_index.ejs');
+  const indexHtml = await utils.readFile(__dirname + '/templates/_index.ejs');
   const styles = embedCss(defaultFiles(__dirname));
   const articles = await posts.last(adminApp, 10);
   const headlinePost = articles.shift();
@@ -42,11 +34,17 @@ app.get('/', async function (req, res) {
 });
 
 app.get('/posts/:title', async function (req, res) {
-  const title = req.params['title'];
-  const styles = embedCss(defaultFiles(__dirname));
-  const singlePost = await posts.single(adminApp, title);
-  const html = renderPage(title, styles);
-  res.json(singlePost);
+  try {
+    const title = req.params['title'];
+    const styles = embedCss(defaultFiles(__dirname));
+    const post = await posts.single(adminApp, title);
+    const postHtml = await utils.readFile(__dirname + '/templates/_post.ejs');
+    const html = ejs.render(postHtml, { styles, __dirname, post });
+    res.send(html);
+  } catch(e) {
+    console.log(e);
+    res.send('<h1>¯\_(ツ)_/¯</h1>');
+  }
 });
 
 app.post('/posts', async function (req, res) {

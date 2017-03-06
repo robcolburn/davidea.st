@@ -1,6 +1,9 @@
 :root {
-  --de-font-article: 'Source Sans Pro', sans-serif;
-  --de-font-header: 'Lato', sans-serif;
+  --de-font-betterhelvetica: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  --de-font-sourcesans: 'Source Sans Pro', "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  --de-font-lato: 'Lato', "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  --de-font-article: var(--de-font-sourcesans);
+  --de-font-header: var(--de-font-lato);
   --de-blue-twitter-alpha: rgba(85,172,238, .6);
   --de-color-blue-firebase: rgba(3, 159, 229, 1);
   --de-color-offblack: rgba(0,0,0, 0.83);

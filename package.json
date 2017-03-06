@@ -5,19 +5,22 @@
   "main": "server/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "tsc && node server/index.js"
+    "start": "tsc && node server/index.js",
+    "compile": "tsc && node server/compile"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@types/ejs": "^2.3.33",
+    "@types/fs-extra": "0.0.37",
     "@types/handlebars": "^4.0.31",
     "@types/pug": "^2.0.4",
     "csso": "^2.3.1",
     "ejs": "^2.5.6",
     "express": "^4.15.0",
     "firebase-admin": "^4.1.2",
+    "fs-extra": "^2.0.0",
     "nunjucks": "^3.0.0",
     "pug": "^2.0.0-beta11"
   },

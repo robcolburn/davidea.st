@@ -13,6 +13,7 @@
         ]
     },
     "files": [
-        "./server/index.ts"
+        "./server/index.ts",
+        "./server/compile.ts"
     ]
 }

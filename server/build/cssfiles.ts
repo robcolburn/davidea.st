@@ -6,5 +6,6 @@ export const defaultFiles = (dirname: string) => [
   '/css/imagefigure.css',
   '/css/headline.css',
   '/css/pill.css',
-  '/css/article.css'
+  '/css/article.css',
+  '/css/prismbasic.css'
 ].map(file => dirname + file);
