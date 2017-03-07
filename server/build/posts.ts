@@ -14,10 +14,19 @@ function snapshotToArray<T>(snapshot: DataSnapshot): T[] {
 }
 
 /**
+ * Get all tag keys used to classify articles
+ * @param app 
+ */
+export function tagKeys(app: AdminApp): admin.Promise<string[]> {
+  const ref = app.database().ref('tagKey');
+  return ref.once('value').then(snap => snapshotToArray<string>(snap));
+}
+
+/**
  * Retrieve all posts from the Firebase Database
  * @param app 
  */
-export function all(app: AdminApp): admin.Promise<Post> {
+export function all(app: AdminApp): admin.Promise<Post[]> {
   const ref = app.database().ref('posts');
   return ref.once('value').then(snap => snapshotToArray<Post>(snap));
 }
@@ -55,7 +64,8 @@ export function create(app: AdminApp, post: Post): admin.Promise<Post> {
   Object.keys(tags).forEach(tag => { 
     tagsUpdate = {
       ...tagsUpdate,
-      [`tags/${tag}/${pagePath}`]: post
+      [`tags/${tag}/${pagePath}`]: post,
+      [`tagKey/${tag}`]: tag
     };
   });
   const updateObject = {
@@ -63,4 +73,14 @@ export function create(app: AdminApp, post: Post): admin.Promise<Post> {
     [`posts/${pagePath}`]: postWithId
   };
   return app.database().ref().update(updateObject).then(_ => single(app, post.pagePath));
+}
+
+/**
+ * Get all the posts for a tag
+ * @param app 
+ * @param tag 
+ */
+export async function tag(app: AdminApp, tag: string): admin.Promise<Post[]> {
+  const query = admin.database().ref('tags').child(tag);
+  return await query.once('value').then(snap => snapshotToArray<Post>(snap));
 }

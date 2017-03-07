@@ -32,14 +32,19 @@ app.get('/', async function (req, res) {
 app.get('/posts/:title', async function (req, res) {
   try {
     const title = req.params['title'];
-    const styles = embedCss(defaultFiles(__dirname));
-    const post = await posts.single(adminApp, title);
-    if(!post) { throw new Error('404'); }
-    const postHtml = await utils.readFile(__dirname + '/templates/_post.ejs');
-    const html = ejs.render(postHtml, { styles, __dirname, post });
+    const html = await render.singlePost(adminApp, title);
     res.send(html);
   } catch(e) {
     console.log(e);
+    res.send(await render.notFound());
+  }
+});
+
+app.get('/tags/:tag', async function(req, res) {
+  try {
+    const tag = req.params['tag'];
+    res.send(await render.tag(adminApp, tag));
+  } catch (e) {
     res.send(await render.notFound());
   }
 });

@@ -10,16 +10,11 @@
   padding-left: 15px;
 }
 
-html.wf-active .de-image-figure .fig-author-figure-title {
-  font-family: var(--de-font-article);
-  font-size: 16px;
-}
-
 .de-image-figure .fig-author-figure-title {
   color: var(--de-color-grey);
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   font-weight: 400;
-  font-size: 15px;
+  font-size: 16px;
   margin-top: 2px;
 }
 

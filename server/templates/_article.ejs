@@ -2,7 +2,7 @@
   <div class="de-pill-box">
     <% Object.keys(post.tags).forEach(function(tag){ %>
     <div class="de-pill de-pill-<%-tag%>">
-      <a href="tags/<%-tag%>"><%- post.tags[tag] %></a>
+      <a href="/tags/<%-tag%>"><%- post.tags[tag] %></a>
     </div>
     <% }); %>
     <span class="de-headline-date"> &#8212; <%= post.date %></span>

@@ -1,6 +1,13 @@
 <div class="de-article-content-title">
   <h1><%= post.title %></h1>
-  <div class="de-article-content-meta">
+  <div class="de-article-content-meta"> 
     <span><%= post.date %> &#8212; <%= post.minRead %>m read</span>
+    <div class="de-pill-box">
+      <% Object.keys(post.tags).forEach(function(tag){ %>
+      <div class="de-pill de-pill-<%-tag%>">
+        <a href="/tags/<%-tag%>"><%- post.tags[tag] %></a>
+      </div>
+      <% }); %>
+    </div>     
   </div>  
 </div>

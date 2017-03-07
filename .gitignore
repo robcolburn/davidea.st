@@ -2,3 +2,4 @@ node_modules
 server/firebase-sa.json
 server/**/*.js
 npm-debug.log
+public

@@ -2,16 +2,18 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>davidea.st - Web Development Articles </title>
+    <title>davidea.st - <%-tag%> Articles</title>
     <style><%- styles %> /**/</style>
   </head>
   <body>
 
     <%- include(__dirname + '/templates/_header'); %>
 
-    <div class="de-grid de-row-double de-padding">
+    <div class="de-padding de-tag-row de-grid de-tagheader">
+      <h2>Articles tagged: <span class="capitalize"><%-tag%><span></h2>
+    </div>
 
-      <%- include(__dirname + '/templates/_headline', { post: headlinePost }); %>
+    <div class="de-grid de-tag-padding">
 
       <div class="articlelist">
         <% articles.forEach(function(post){ %>

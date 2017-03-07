@@ -4,7 +4,7 @@ import * as ejs from 'ejs';
 import * as admin from 'firebase-admin';
 
 import * as posts from '../build/posts';
-import { Post } from '../interfaces';
+import { Post, AdminApp } from '../interfaces';
 import { defaultFiles, styles404 } from '../build/cssfiles';
 import { embedCss } from '../build/embedcss';
 import * as utils from '../build/utils';
@@ -20,7 +20,7 @@ export async function notFound() {
   }
 }
 
-export async function home(adminApp: admin.app.App, limit: number) {
+export async function home(adminApp: AdminApp, limit: number) {
   const __dirname = process.cwd() + '/server/';
   try {
     const indexHtml = await utils.readFile(__dirname + '/templates/_index.ejs');
@@ -33,14 +33,34 @@ export async function home(adminApp: admin.app.App, limit: number) {
   }
 }
 
-export async function singlePost(adminApp: admin.app.App, title: string) {
+export async function singlePost(adminApp: AdminApp, title: string) {
+  const __dirname = process.cwd() + '/server/';
+  const styles = embedCss(defaultFiles(__dirname));
+  const post = await posts.single(adminApp, title);
+  if (!post) { throw new Error('404'); }
+  const postHtml = await utils.readFile(__dirname + '/templates/_post.ejs');
+  const html = ejs.render(postHtml, { styles, __dirname, post });
+  return html;
+}
+
+export async function single(post: Post) {
+  const __dirname = process.cwd() + '/server/';
+  const styles = embedCss(defaultFiles(__dirname));
+  if (!post) { throw new Error('404'); }
+  const postHtml = await utils.readFile(__dirname + '/templates/_post.ejs');
+  const html = ejs.render(postHtml, { styles, __dirname, post });
+  return html;
+}
+
+export async function tag(adminApp: AdminApp, tag: string) {
   const __dirname = process.cwd() + '/server/';
   try {
     const styles = embedCss(defaultFiles(__dirname));
-    const post = await posts.single(adminApp, title);
-    const postHtml = await utils.readFile(__dirname + '/templates/_post.ejs');
-    const html = ejs.render(postHtml, { styles, __dirname, post });
-  } catch(e) {
+    const articles = await posts.tag(adminApp, tag);
+    const tagHtml = await utils.readFile(__dirname + '/templates/_tag.ejs');
+    const html = ejs.render(tagHtml, { styles, __dirname, articles, tag });
+    return html;
+  } catch (e) {
     return e;
-  }  
-}
+  }
+} 
