@@ -1,17 +1,18 @@
 <div class="de-article de-row-double">
-  <h4 class="de-article-date"><%= post.date %></h4>
-  <h2 class="de-article-title">
-    <a href="posts/<%= post.pagePath %>"><%= post.title %></a>
-  </h2>
   <div class="de-pill-box">
     <% Object.keys(post.tags).forEach(function(tag){ %>
     <div class="de-pill de-pill-<%-tag%>">
       <a href="tags/<%-tag%>"><%- post.tags[tag] %></a>
     </div>
     <% }); %>
+    <span class="de-headline-date"> &#8212; <%= post.date %></span>
   </div>
+  <h2 class="de-article-title">
+    <a href="posts/<%= post.pagePath %>"><%= post.title %></a>
+  </h2>
+
   <p class="de-article-whyread-content">
-    <span class="de-article-whyread">Why Read:</span> <%= post.whyRead %>
+    <%= post.whyRead %>
   </p>
   <a class="de-article-readmore" href="posts/<%= post.pagePath %>">Read More.</a> 
   <div class="de-article-divider"></div>     

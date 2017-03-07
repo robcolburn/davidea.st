@@ -7,12 +7,18 @@
   </head>
   <body>
 
-    <%- include(__dirname + '/templates/_header-post'); %>
+    <%- include(__dirname + '/templates/_header'); %>
 
     <div class="de-grid de-row-double de-padding">
 
-      <article>
+      <article class="de-post">
+
+        <section class="de-article-content">
+          <%- include(__dirname + '/templates/_article-title', { post }); %>
+        </section>
+
         <%- include(__dirname + post.page); %>
+        
       </article>
 
     </div>
@@ -20,6 +26,6 @@
     <%- include(__dirname + '/templates/_footer'); %> 
 
     <script defer src="/assets/prism.js"></script>
-    <script async src="/assets/fonts.js"></script>
+    <script defer src="/assets/fonts.js"></script>
   </body>
 </html>

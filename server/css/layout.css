@@ -8,14 +8,6 @@
   margin: 20px 0;
 }
 
-.de-grid section h3 + p, .de-article-content-top {
-  margin: 0px 20px;
-}
-
-.de-article-content-first-line {
-  font-size: 24px;
-}
-
 .de-header {
   padding: 20px 0;
   border-bottom: 1px solid #DFDFDF;

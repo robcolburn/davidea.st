@@ -1,0 +1,19 @@
+.de-post h1, .de-post h2, .de-post h3, .de-post h4, .de-post h5 {
+  margin: 20px 0;
+}
+
+.de-post h3 {
+  font-weight: bold;
+  margin: 0;
+}
+
+
+.de-article-content-title h1 {
+  margin: 0;
+}
+
+.de-article-content-title span {
+  color: #5a5a5a;
+  font-weight: 100;
+  font-size: 16px;  
+}

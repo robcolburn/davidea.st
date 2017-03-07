@@ -4,8 +4,9 @@ import * as ejs from 'ejs';
 import * as admin from 'firebase-admin';
 
 import * as posts from './build/posts';
+import * as render from './build/render';
 import { Post } from './interfaces';
-import { defaultFiles } from './build/cssfiles';
+import { defaultFiles, styles404 } from './build/cssfiles';
 import { embedCss } from './build/embedcss';
 import * as utils from './build/utils';
 
@@ -20,16 +21,11 @@ const adminApp = admin.initializeApp({
 });
 
 app.get('/', async function (req, res) {
-  const indexHtml = await utils.readFile(__dirname + '/templates/_index.ejs');
-  const styles = embedCss(defaultFiles(__dirname));
-  const articles = await posts.last(adminApp, 10);
-  const headlinePost = articles.shift();
   try {
-    const html = ejs.render(indexHtml, { styles, __dirname, headlinePost, articles });
+    const html = await render.home(adminApp, 10);
     res.send(html);
-  } catch (e) {
-    console.log(e);
-    res.send('<h1>¯\_(ツ)_/¯</h1>');
+  } catch(e) {
+    res.send(await render.notFound());
   }
 });
 
@@ -38,12 +34,13 @@ app.get('/posts/:title', async function (req, res) {
     const title = req.params['title'];
     const styles = embedCss(defaultFiles(__dirname));
     const post = await posts.single(adminApp, title);
+    if(!post) { throw new Error('404'); }
     const postHtml = await utils.readFile(__dirname + '/templates/_post.ejs');
     const html = ejs.render(postHtml, { styles, __dirname, post });
     res.send(html);
   } catch(e) {
     console.log(e);
-    res.send('<h1>¯\_(ツ)_/¯</h1>');
+    res.send(await render.notFound());
   }
 });
 
@@ -52,13 +49,6 @@ app.post('/posts', async function (req, res) {
   const newPost = await posts.create(adminApp, postBody);
   res.json(newPost);
 });
-
-function renderPage(title: string, styles: string) {
-  // const compiledPost = pug.compileFile(__dirname + '/templates/_post.handlerbars');
-  // const content = pug.compileFile(__dirname + '/posts/' + title + '.handlerbars')();
-  // return compiledPost({ title, styles, content });
-  return '';
-}
 
 /*
 function createPostsFromJson(): Promise<Post[]> {

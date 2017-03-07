@@ -3,6 +3,7 @@ import * as ejs from 'ejs';
 import * as admin from 'firebase-admin';
 import * as utils from './build/utils';
 import * as posts from './build/posts';
+import * as render from './build/render';
 
 import { Post, AdminApp } from './interfaces';
 import { defaultFiles } from './build/cssfiles';
@@ -10,14 +11,18 @@ import { embedCss } from './build/embedcss';
 
 export async function home (adminApp: AdminApp, limit: number) {
   try {
-    const styles = embedCss(defaultFiles(__dirname));
-    const articles = await posts.last(adminApp, 10);
-    const headlinePost = articles.shift();
-    const indexHtml = await utils.readFile(__dirname + '/templates/_index.ejs');
-    await utils.copy(`${__dirname}/assets`, `${process.cwd()}/public/assets`)
-    const html = ejs.render(indexHtml, { styles, __dirname, headlinePost, articles });
+    const html = await render.home(adminApp, limit);
     return utils.writeFile(process.cwd() + '/public/index.html', html);
   } catch (e) {
+    return e;
+  }
+}
+
+export async function notFound() {
+  try {
+    const html = await render.notFound();
+    return utils.writeFile(process.cwd() + '/public/404.html', html);
+  } catch(e) {
     return e;
   }
 }
@@ -38,5 +43,6 @@ const adminApp = admin.initializeApp({
 });
 
 home(adminApp, 10)
+  .then(() => notFound())  
   .then(a => process.exit(0))
   .catch(e => { console.log(e); process.exit(1); });

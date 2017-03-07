@@ -14,18 +14,18 @@
 }
 
 .de-article-title {
-  padding: 10px 0;
+  padding-top: 20px;
 }
-
 
 .de-article-title a {
   color: var(--de-color-offblack);
+  font-weight: 400;
   font-size: 30px;
   text-decoration: none;
 }
 
 .de-article-title a:hover {
-  border-bottom: 1px solid var(--de-color-lightgrey);
+  border-bottom: 2px solid var(--de-color-offblack);
 }
 
 .de-article-date {
