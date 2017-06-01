@@ -1,0 +1,11 @@
+importScripts('/workbox-sw.prod.v0.0.2.js');
+const workboxSW = new WorkboxSW();
+
+const cachedItems = 
+  /** ::CACHED_ITEMS:: */;
+
+self.addEventListener('install', event => event.waitUntil(self.skipWaiting()));
+self.addEventListener('activate', event => event.waitUntil(self.clients.claim()));
+
+workboxSW.precache(cachedItems);
+workboxSW.router.registerRoute('/', workboxSW.strategies.staleWhileRevalidate());

@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "tsc && node server/index.js",
-    "compile": "tsc && node server/compile"
+    "copy_npm": "cp node_modules/workbox-sw/build/importScripts/workbox-sw.prod.v0.0.2.js* public/",
+    "build_sw": "tsc && node build/sw-build && cp build/sw.js public/ && npm run copy_npm",
+    "compile": "tsc && node server/compile && npm run build_sw"
   },
   "keywords": [],
   "author": "",
@@ -14,18 +16,16 @@
   "devDependencies": {
     "@types/ejs": "^2.3.33",
     "@types/fs-extra": "0.0.37",
-    "@types/handlebars": "^4.0.31",
-    "@types/pug": "^2.0.4",
     "csso": "^2.3.1",
     "ejs": "^2.5.6",
     "express": "^4.15.0",
     "firebase-admin": "^4.1.2",
-    "fs-extra": "^2.0.0",
-    "nunjucks": "^3.0.0",
-    "pug": "^2.0.0-beta11"
+    "fs-extra": "^2.0.0"
   },
   "private": true,
   "dependencies": {
-    "webfontloader": "^1.6.27"
+    "webfontloader": "^1.6.27",
+    "workbox-build": "^1.0.1",
+    "workbox-sw": "0.0.2"
   }
 }

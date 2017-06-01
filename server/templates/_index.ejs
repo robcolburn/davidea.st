@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="manifest" href="manifest.json">
     <title>davidea.st - Web Development Articles</title>
     <style><%- styles %> /**/</style>
   </head>
@@ -25,6 +26,13 @@
     
     <%- include(__dirname + '/templates/_footer'); %> 
 
+    <script>
+      if ('serviceWorker' in window.navigator) {
+        window.addEventListener('load', function() {
+          window.navigator.serviceWorker.register('/sw.js')
+        });
+      }
+    </script>
     <script defer src="/assets/fonts.js"></script>
   </body>
 </html>

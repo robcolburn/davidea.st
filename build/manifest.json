@@ -1,0 +1,9 @@
+{
+  "name": "davidea.st",
+  "short_name": "davidea.st",
+  "theme_color": "#039fe5",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "scope": "/",
+  "start_url": "/"
+}
