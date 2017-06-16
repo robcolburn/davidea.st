@@ -7,7 +7,8 @@ async function buildSW() {
   try {
     let fileDetails = await swBuild.getFileManifestEntries({
       globDirectory: './public',
-      globPatterns: ['**\/*.{html,js,css,png,jpg}']
+      globPatterns: ['**\/*.{html,js,css,png,jpg}'],
+      globIgnores: ['404.html']
     });
     fileDetails = cleanRoutes(fileDetails);
     const detailsJSON = JSON.stringify(fileDetails);

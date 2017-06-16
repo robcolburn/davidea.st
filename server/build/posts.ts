@@ -17,7 +17,7 @@ function snapshotToArray<T>(snapshot: DataSnapshot): T[] {
  * Get all tag keys used to classify articles
  * @param app 
  */
-export function tagKeys(app: AdminApp): admin.Promise<string[]> {
+export function tagKeys(app: AdminApp): Promise<string[]> {
   const ref = app.database().ref('tagKey');
   return ref.once('value').then(snap => snapshotToArray<string>(snap));
 }
@@ -26,7 +26,7 @@ export function tagKeys(app: AdminApp): admin.Promise<string[]> {
  * Retrieve all posts from the Firebase Database
  * @param app 
  */
-export function all(app: AdminApp): admin.Promise<Post[]> {
+export function all(app: AdminApp): Promise<Post[]> {
   const ref = app.database().ref('posts');
   return ref.once('value').then(snap => snapshotToArray<Post>(snap));
 }
@@ -36,7 +36,7 @@ export function all(app: AdminApp): admin.Promise<Post[]> {
  * @param app 
  * @param limit 
  */
-export function last(app: AdminApp, limit: number): admin.Promise<Post[]> {
+export function last(app: AdminApp, limit: number): Promise<Post[]> {
   const query = app.database().ref('posts').orderByChild('timestamp').limitToLast(limit);
   return query.once('value').then(snap => snapshotToArray<Post>(snap));
 }
@@ -46,7 +46,7 @@ export function last(app: AdminApp, limit: number): admin.Promise<Post[]> {
  * @param app 
  * @param path 
  */
-export function single(app: AdminApp, path: string): admin.Promise<Post> {
+export function single(app: AdminApp, path: string): Promise<Post> {
   return app.database().ref('posts').child(path).once('value').then(snap => snap.val());
 }
 
@@ -56,7 +56,7 @@ export function single(app: AdminApp, path: string): admin.Promise<Post> {
  * @param app 
  * @param post 
  */
-export function create(app: AdminApp, post: Post): admin.Promise<Post> {
+export function create(app: AdminApp, post: Post): Promise<Post> {
   const timestamp = admin.database.ServerValue.TIMESTAMP;
   const postWithId = { ...post, timestamp };
   const { tags, pagePath } = post;
@@ -80,7 +80,7 @@ export function create(app: AdminApp, post: Post): admin.Promise<Post> {
  * @param app 
  * @param tag 
  */
-export async function tag(app: AdminApp, tag: string): admin.Promise<Post[]> {
+export async function tag(app: AdminApp, tag: string): Promise<Post[]> {
   const query = admin.database().ref('tags').child(tag);
   return await query.once('value').then(snap => snapshotToArray<Post>(snap));
 }

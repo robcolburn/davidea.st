@@ -1,9 +1,8 @@
 :root {
   --de-font-betterhelvetica: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-  --de-font-sourcesans: 'Source Sans Pro', "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-  --de-font-lato: 'Lato', "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-  --de-font-article: var(--de-font-sourcesans);
-  --de-font-header: var(--de-font-lato);
+  --de-font-system: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --de-font-article: var(--de-font-system);
+  --de-font-header: var(--de-font-system);
   --de-blue-twitter-alpha: rgba(85,172,238, .6);
   --de-color-blue-firebase: rgba(3, 159, 229, 1);
   --de-color-offblack: rgba(0,0,0, 0.83);

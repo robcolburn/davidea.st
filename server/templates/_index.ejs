@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link rel="manifest" href="manifest.json">
+    <link rel="manifest" href="/assets/manifest.json">
     <title>davidea.st - Web Development Articles</title>
     <style><%- styles %> /**/</style>
   </head>
@@ -28,11 +28,31 @@
 
     <script>
       if ('serviceWorker' in window.navigator) {
+        function attachOnUpdateFound(registration, versionChangeCallback, offlineReadyCallback) {
+          registration.onupdatefound = function () {
+            const installingWorker = registration.installing;
+            installingWorker.onstatechange = function () {
+              if (installingWorker.state === 'installed') {
+                if (navigator.serviceWorker.controller) {
+                  versionChangeCallback();
+                } else {
+                  offlineReadyCallback();
+                }
+              }
+            };
+          };
+        }
+
         window.addEventListener('load', function() {
-          window.navigator.serviceWorker.register('/sw.js')
+          window.navigator.serviceWorker.register('/sw.js').then(registration => {
+            attachOnUpdateFound(registration, function onUpdate() {
+              console.log('new app version ready!');
+            }, function onOffline() {
+              console.log('ready to go offline!');
+            });
+          });
         });
       }
     </script>
-    <script defer src="/assets/fonts.js"></script>
   </body>
 </html>
