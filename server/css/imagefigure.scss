@@ -11,7 +11,7 @@
 }
 
 .de-image-figure .fig-author-figure-title {
-  color: var(--de-color-grey);
+  color: $de-color-grey;
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   font-weight: 400;
   font-size: 16px;
@@ -19,7 +19,7 @@
 }
 
 .fig-author-figure-title-header a {
-  color: var(--de-color-grey);
+  color: $de-color-grey;
   font-size: 28px;
   text-decoration: none;
 }
@@ -34,7 +34,7 @@
 }
 
 .de-image-figure:hover .de-imageover-color, .de-imagecover:hover .de-imageover-color {
-  background-color: var(--de-blue-twitter-alpha);
+  background-color: $de-blue-twitter-alpha;
 }
 
 .de-image-figure:hover .de-imageover-image, .de-imagecover:hover .de-imageover-image {

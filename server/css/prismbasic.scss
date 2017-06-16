@@ -15,7 +15,7 @@
 
 code[class*="language-"],
 pre[class*="language-"] {
-  color: var(--prism-text);
+  color: $prism-text;
 	font-size: 16px;
 	background: none;
 	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
@@ -57,7 +57,7 @@ pre[class*="language-"] {
 
 :not(pre) > code[class*="language-"],
 pre[class*="language-"] {
-  background: var(--prism-bg);
+  background: $prism-bg;
 }
 
 /* Inline code */
@@ -71,11 +71,11 @@ pre[class*="language-"] {
 .token.prolog,
 .token.doctype,
 .token.cdata {
-  color: var(--prism-comment);
+  color: $prism-comment;
 }
 
 .token.punctuation {
-  color: var(--prism-punctuation);
+  color: $prism-punctuation;
 }
 
 .namespace {
@@ -89,7 +89,7 @@ pre[class*="language-"] {
 .token.constant,
 .token.symbol,
 .token.deleted {
-	color: var(--prism-number);
+	color: $prism-number;
 }
 
 .token.selector,
@@ -98,7 +98,7 @@ pre[class*="language-"] {
 .token.char,
 .token.builtin,
 .token.inserted {
-	color: var(--prism-string);
+	color: $prism-string;
 }
 
 .token.operator,
@@ -106,23 +106,23 @@ pre[class*="language-"] {
 .token.url,
 .language-css .token.string,
 .style .token.string {
-	color: var(--prism-text);
+	color: $prism-text;
 }
 
 .token.atrule,
 .token.attr-value,
 .token.keyword {
-	color: var(--prism-keyword);
+	color: $prism-keyword;
 }
 
 .token.function {
-	color: var(--prism-function);
+	color: $prism-function;
 }
 
 .token.regex,
 .token.important,
 .token.variable {
-	color: var(--prism-regex);
+	color: $prism-regex;
 }
 
 .token.important,

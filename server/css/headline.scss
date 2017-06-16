@@ -1,5 +1,5 @@
 .de-headline {
-  border-bottom: 1px solid var(--de-color-lightgrey);
+  border-bottom: 1px solid $de-color-lightgrey;
   padding-bottom: 60px;  
 }
 
@@ -13,17 +13,17 @@
 }
 
 .de-headline-title a {
-  color: var(--de-color-offblack);
+  color: $de-color-offblack;
   font-weight: 400;
   text-decoration: none;
 }
 
 .de-headline-title a:hover {
-  border-bottom: 2px solid var(--de-color-offblack);
+  border-bottom: 2px solid $de-color-offblack;
 }
 
 .de-headline-whyread {
-  font-family: var(--de-font-header);
+  font-family: $de-font-header;
   font-size: 24px;
 }
 

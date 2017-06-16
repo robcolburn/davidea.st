@@ -7,7 +7,7 @@
 .de-article-divider {
   width: 50%;
   height: 1px;
-  border-bottom: 1px solid var(--de-color-lightgrey);
+  border-bottom: 1px solid $de-color-lightgrey;
   position: absolute;
   bottom: 0;
   left: 0;  
@@ -18,24 +18,24 @@
 }
 
 .de-article-title a {
-  color: var(--de-color-offblack);
+  color: $de-color-offblack;
   font-weight: 400;
   font-size: 30px;
   text-decoration: none;
 }
 
 .de-article-title a:hover {
-  border-bottom: 2px solid var(--de-color-offblack);
+  border-bottom: 2px solid $de-color-offblack;
 }
 
 .de-article-date {
-  font-family: var(--de-font-header);
+  font-family: $de-font-header;
   font-size: 14px;
 }
 
 .de-article-whyread {
   display: inline-block;
-  font-family: var(--de-font-header);
+  font-family: $de-font-header;
   font-size: 16px;
 }
 
