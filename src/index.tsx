@@ -8,6 +8,7 @@ import * as posts from './services/posts';
 import * as firebase from 'firebase-admin';
 import * as utils from './utils';
 import { compileAll } from './compile';
+import * as blogRenderer from './render';
 
 if (process.env['COMPILE']) {
   compileAll()
@@ -47,6 +48,12 @@ function startServer() {
       console.log(e);
       res.status(404).send('<h1>404</h1>');
     }
+  });
+
+  app.get('/tags/:tag', async (req, res) => {
+    const { tag } = req.params;
+    const tagHtml = await blogRenderer.tag(adminApp, tag);
+    res.send(tagHtml);
   });
 
   app.listen(3000, () => console.log('Listening on 3000'));

@@ -10,6 +10,7 @@ import * as render from 'preact-render-to-string';
 
 import Main from './pages/main';
 import ArticlePage from './pages/article';
+import TagPage from './pages/tag';
 
 const OFFLINE = !!process.env['OFFLINE'];
 
@@ -51,10 +52,10 @@ export async function single(post: Post) {
 
 export async function tag(adminApp: AdminApp, tag: string) {
   try {
-    const styles = generate404Styles();
+    const styles = generateDefaultStyles();
     const articles = await posts.tag(adminApp, tag, OFFLINE);
-    const tagHtml = await utils.readFile(__dirname + '/templates/_tag.ejs');
-    return render(tagHtml, { styles, __dirname, articles, tag });
+    const tagHtml = render(TagPage({ styles, articles, tag }));
+    return tagHtml;
   } catch (e) {
     return e;
   }
