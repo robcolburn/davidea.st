@@ -11,15 +11,15 @@ import * as render from 'preact-render-to-string';
 import Main from './pages/main';
 import ArticlePage from './pages/article';
 import TagPage from './pages/tag';
+import NotFoundPage from './pages/404';
 
 const OFFLINE = !!process.env['OFFLINE'];
 
 export async function notFound() {
   const __dirname = process.cwd() + '/server/';
   try {
-    const html404 = await utils.readFile(__dirname + '/templates/_404.ejs');
     const styles = generate404Styles();
-    return render(html404, { styles, __dirname });
+    return render(NotFoundPage({ styles }));
   } catch(e) {
     return e;
   }

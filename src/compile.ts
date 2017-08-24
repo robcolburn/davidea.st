@@ -69,9 +69,9 @@ export async function compileAll() {
 
   try {
     await home(adminApp, 10);
-    //await notFound();
+    await notFound();
     await articles(adminApp);
-    //await tags(adminApp);
+    await tags(adminApp);
     process.exit(0); 
   } catch (e) {
     console.log(e); process.exit(1);
