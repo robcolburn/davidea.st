@@ -1,0 +1,32 @@
+.de-headline {
+  border-bottom: 1px solid $de-color-lightgrey;
+  padding-bottom: 60px;  
+}
+
+.de-headline-date {
+  color: #5a5a5a;
+  font-weight: lighter;
+} 
+
+.de-headline-title {
+  padding-top: 20px;
+}
+
+.de-headline-title a {
+  color: $de-color-offblack;
+  font-weight: 400;
+  text-decoration: none;
+}
+
+.de-headline-title a:hover {
+  border-bottom: 2px solid $de-color-offblack;
+}
+
+.de-headline-whyread {
+  font-family: $de-font-header;
+  font-size: 24px;
+}
+
+.de-headline-whyread-content {
+  font-size: 18px;
+}

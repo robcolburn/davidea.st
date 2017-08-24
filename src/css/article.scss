@@ -1,0 +1,44 @@
+.de-article {
+  box-sizing: border-box;
+  padding-bottom: 60px;  
+  position: relative;
+}
+
+.de-article-divider {
+  width: 50%;
+  height: 1px;
+  border-bottom: 1px solid $de-color-lightgrey;
+  position: absolute;
+  bottom: 0;
+  left: 0;  
+}
+
+.de-article-title {
+  padding-top: 20px;
+}
+
+.de-article-title a {
+  color: $de-color-offblack;
+  font-weight: 400;
+  font-size: 30px;
+  text-decoration: none;
+}
+
+.de-article-title a:hover {
+  border-bottom: 2px solid $de-color-offblack;
+}
+
+.de-article-date {
+  font-family: $de-font-header;
+  font-size: 14px;
+}
+
+.de-article-whyread {
+  display: inline-block;
+  font-family: $de-font-header;
+  font-size: 16px;
+}
+
+.de-article-whyread-content {
+  font-size: 16px;
+}

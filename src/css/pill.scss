@@ -1,0 +1,32 @@
+.de-pill {
+  background-color: $de-color-white;
+  border: 1px solid $de-color-grey;  
+  border-radius: 6px;
+  display: inline-block;
+  transition: box-shadow .2s ease-in;
+  width: 80px; 
+}
+
+.de-pill:hover {
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,.26)
+}
+
+.de-pill a {
+  align-items: center;  
+  display: flex;
+  color: $de-color-grey;
+  font-size: 12px;  
+  height: 20px;  
+  justify-content: center;
+  text-decoration: none;
+  width: 80px;  
+}
+
+.de-pill.de-pill-firebase {
+  background-color: $de-color-blue-firebase;  
+  border: 1px solid $de-color-blue-firebase;
+}
+
+.de-pill.de-pill.de-pill-firebase a {
+  color: $de-color-white;
+}

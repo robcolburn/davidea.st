@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es2015",
+    "rootDir": ".",
+    "outDir": "../dist",
+    "jsx": "react",
+    "jsxFactory": "h",
+    "lib": [
+      "es2015",
+      "dom"
+    ]
+  }
+}
