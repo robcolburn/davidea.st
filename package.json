@@ -5,11 +5,13 @@
   "main": "server/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm run build:tsc && node server/index.js",
+    "start": "yarn build && node dist/index.js",
+    "start:offline": "yarn build && OFFLINE=true && node dist/index.js",
+    "build": "node_modules/.bin/tsc -p src/tsconfig.server.json && cp -R src/assets dist && cp -R src/css dist && cp src/firebase-sa.json dist && cp src/services/posts.json dist/services && cp -R src/articles dist/",
     "build:tsc": "node_modules/.bin/tsc",
     "copy_npm": "cp node_modules/workbox-sw/build/importScripts/workbox-sw.prod.v0.0.2.js* public/",
     "build:sw": "npm run build:tsc && node build/sw-build && cp build/sw.js public/ && npm run copy_npm",
-    "compile": "npm run build:tsc && node server/compile && npm run build:sw"
+    "compile": "yarn build && COMPILE=true node dist/index.js && cp -R src/assets public"
   },
   "keywords": [],
   "author": "",
@@ -20,12 +22,16 @@
     "csso": "^2.3.1",
     "ejs": "^2.5.6",
     "express": "^4.15.0",
-    "firebase-admin": "^4.1.2",
+    "firebase-admin": "^5.2.1",
     "fs-extra": "^2.0.0"
   },
   "private": true,
   "dependencies": {
+    "@types/express": "^4.0.37",
+    "@types/node-sass": "^3.10.32",
     "node-sass": "^4.5.3",
+    "preact": "^8.2.1",
+    "preact-render-to-string": "^3.6.3",
     "typescript": "^2.3.4",
     "webfontloader": "^1.6.27",
     "workbox-build": "^1.0.1",

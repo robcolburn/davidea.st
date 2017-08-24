@@ -1,0 +1,33 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+h1 {
+  font-size: 2.3em;
+}
+h1, h2, h3, h4, h5 {
+  font-weight: 400;
+  margin: 0;
+}
+h2 {
+  font-size: 36px;
+}
+article {
+  font-size: 19px;
+  line-height: 40px;
+}
+html.wf-active article {
+  font-size: 20px;
+  line-height: 40px;
+}
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 0;
+  font-size: 18px;
+}
