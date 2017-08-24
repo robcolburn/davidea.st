@@ -4,6 +4,7 @@
   border-radius: 6px;
   display: inline-block;
   transition: box-shadow .2s ease-in;
+  margin: 0 4px 0 0;
   width: 80px; 
 }
 
@@ -29,4 +30,8 @@
 
 .de-pill.de-pill.de-pill-firebase a {
   color: $de-color-white;
+}
+
+.de-pill-box {
+  margin-top: 14px;
 }

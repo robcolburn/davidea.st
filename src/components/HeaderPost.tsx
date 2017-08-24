@@ -1,6 +1,6 @@
 import { h } from 'preact';
 
-const Header = (props) => (
+const HeaderPost = (props) => (
   <header class="de-header de-padding">
 
     <div class="de-grid">
@@ -14,16 +14,15 @@ const Header = (props) => (
         </a>
 
         <figcaption>
-          <div class="fig-author-figure-title-header">
-            <a href="/">davidea.st</a>
-          </div>
-          <div class="fig-author-figure-title">Web development and Firebase articles</div>
+          <div class="fig-author-figure-title">davidea.st</div>
+          <div class="fig-author-figure-title">Developer Advocate at Google on Firebase.</div>
+          <div class="fig-author-figure-title">{props.date} &#8212; {props.minRead}m read</div>
         </figcaption>
       </figure>
 
     </div>
 
   </header>
-);
+)
 
-export default Header;
+export default HeaderPost;

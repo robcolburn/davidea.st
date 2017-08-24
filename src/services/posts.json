@@ -1,0 +1,24 @@
+{
+  "posts": {
+    "firebase-rollup-tree-shaking": {
+      "date": "March 14th, 2017",
+      "title": "Create smaller bundles with Firebase and Rollup",
+      "page": "/posts/firebase-rollup-tree-shaking.html",
+      "whyRead": "Rollup is a special JavaScript bundles that uses ES2015 modules to tree shake uneeded code. Which leads to smaller bundles. Creating smaller bundles means faster page load times. Plus, there’s some super cool new syntax to learn.",
+      "minRead": "5",
+      "author": "David East",
+      "tags": { "firebase": "Firebase", "rollup": "Rollup" },
+      "pagePath": "firebase-rollup-tree-shaking"
+    },
+    "firebase-lazy-loading": {
+      "author": "David East",
+      "date": "March 1st, 2017",
+      "pagePath": "firebase-lazy-loading",
+      "minRead": "5",
+      "page": "/posts/firebase-lazy-loading.html",
+      "tags": { "firebase": "Firebase" },
+      "whyRead": "Taking Firebase out of your critical path gives your page load a huge boost.",
+      "title": "Improve page load times by lazy loading Firebase"
+    }    
+  }
+}

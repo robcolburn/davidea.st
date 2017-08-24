@@ -1,20 +1,6 @@
-
-/**
-  background
-  default text
-	selection
-  keywords
-  operators
-  comments
-  punctuation
-  numbers
-  char,string
-  function
-*/
-
-
-code[class*="language-"],
-pre[class*="language-"] {
+code[class*='language-'],
+pre[class*='language-'] {
+	background: #28323F !important;
   color: $prism-text;
 	font-size: 16px;
 	background: none;
@@ -36,32 +22,32 @@ pre[class*="language-"] {
 	hyphens: none;
 }
 
-pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
-code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+pre[class*='language-']::-moz-selection, pre[class*='language-'] ::-moz-selection,
+code[class*='language-']::-moz-selection, code[class*='language-'] ::-moz-selection {
 	text-shadow: none;
 	background: #b3d4fc;
 }
 
-pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
-code[class*="language-"]::selection, code[class*="language-"] ::selection {
+pre[class*='language-']::selection, pre[class*='language-'] ::selection,
+code[class*='language-']::selection, code[class*='language-'] ::selection {
 	text-shadow: none;
 	background: #b3d4fc;
 }
 
 /* Code blocks */
-pre[class*="language-"] {
+pre[class*='language-'] {
 	padding: 1em;
 	margin: .5em 0;
 	overflow: auto;
 }
 
-:not(pre) > code[class*="language-"],
-pre[class*="language-"] {
+:not(pre) > code[class*='language-'],
+pre[class*='language-'] {
   background: $prism-bg;
 }
 
 /* Inline code */
-:not(pre) > code[class*="language-"] {
+:not(pre) > code[class*='language-'] {
 	padding: .1em;
 	border-radius: .3em;
 	white-space: normal;

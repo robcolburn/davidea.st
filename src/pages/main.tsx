@@ -5,27 +5,28 @@ import Headline from '../components/Headline';
 import Footer from '../components/Footer';
 import ArticleList from '../components/ArticleList';
 
-const Main = (props) => (
-  <html>
-    <Head styles={props.styles} />
+const title = 'davidea.st - Web Development Articles';
+const Main = (props) => {
+  return (
+    <html>
+      <Head title={title} styles={props.styles} />
+      <body>
+        <Header />
 
-    <body>
+        <div class="de-grid de-row-double de-padding">
+          
+          <Headline article={props.headlinePost} />
 
-      <Header />
+          <ArticleList articles={props.articles} />
 
-      <div class="de-grid de-row-double de-padding">
-        
-        <Headline post={props.headlinePost} />
+        </div>
 
-        <ArticleList articles={props.articles} />
+        <Footer />
 
-      </div>
-
-      <Footer />
-
-      {/* <script src="/sw.reg.js"></script> */}
-    </body>
-  </html>
-);
+        {/* <script src="/sw.reg.js"></script> */}
+      </body>
+    </html>
+  );
+}
 
 export default Main;

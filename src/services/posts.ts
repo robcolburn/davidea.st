@@ -13,6 +13,19 @@ function snapshotToArray<T>(snapshot: DataSnapshot): T[] {
   return array;
 }
 
+function postToSnap(posts: any, key: string) {
+  return {
+    val: () => posts,
+    key: key,
+    forEach: (callback) => {
+      Object.keys(posts).forEach(key => {
+        const post = { key, ...posts[key] };
+        callback(postToSnap(post, key));
+      });
+    }
+  } as DataSnapshot;
+}
+
 /**
  * Get all tag keys used to classify articles
  * @param app 
@@ -26,7 +39,14 @@ export function tagKeys(app: AdminApp): Promise<string[]> {
  * Retrieve all posts from the Firebase Database
  * @param app 
  */
-export function all(app: AdminApp): Promise<Post[]> {
+export function all(app: AdminApp, offline = false): Promise<Post[]> {
+  if(offline) {
+    return new Promise((resolve, reject) => {
+      const { posts } = require(__dirname + '/posts.json');
+      const snap = postToSnap(posts, 'posts');      
+      resolve(snapshotToArray<Post>(snap));
+    });
+  }  
   const ref = app.database().ref('posts');
   return ref.once('value').then(snap => snapshotToArray<Post>(snap));
 }
@@ -36,7 +56,14 @@ export function all(app: AdminApp): Promise<Post[]> {
  * @param app 
  * @param limit 
  */
-export function last(app: AdminApp, limit: number): Promise<Post[]> {
+export function last(app: AdminApp, limit: number, offline = false): Promise<Post[]> {
+  if(offline) {
+    return new Promise((resolve, reject) => {
+      const { posts } = require(__dirname + '/posts.json');
+      const snap = postToSnap(posts, 'posts');      
+      resolve(snapshotToArray<Post>(snap));
+    });
+  }    
   const query = app.database().ref('posts').orderByChild('timestamp').limitToLast(limit);
   return query.once('value').then(snap => snapshotToArray<Post>(snap));
 }
@@ -46,7 +73,14 @@ export function last(app: AdminApp, limit: number): Promise<Post[]> {
  * @param app 
  * @param path 
  */
-export function single(app: AdminApp, path: string): Promise<Post> {
+export function single(app: AdminApp, path: string, offline = false): Promise<Post> {
+  if(offline) {
+    return new Promise((resolve, reject) => {
+      const { posts } = require(__dirname + '/posts.json');
+      const single = posts[path];
+      resolve(single);
+    });
+  }
   return app.database().ref('posts').child(path).once('value').then(snap => snap.val());
 }
 
@@ -56,7 +90,7 @@ export function single(app: AdminApp, path: string): Promise<Post> {
  * @param app 
  * @param post 
  */
-export function create(app: AdminApp, post: Post): Promise<Post> {
+export function create(app: AdminApp, post: Post, offline = false): Promise<Post> {
   const timestamp = admin.database.ServerValue.TIMESTAMP;
   const postWithId = { ...post, timestamp };
   const { tags, pagePath } = post;
@@ -80,7 +114,7 @@ export function create(app: AdminApp, post: Post): Promise<Post> {
  * @param app 
  * @param tag 
  */
-export async function tag(app: AdminApp, tag: string): Promise<Post[]> {
+export async function tag(app: AdminApp, tag: string, offline = false): Promise<Post[]> {
   const query = admin.database().ref('tags').child(tag);
   return await query.once('value').then(snap => snapshotToArray<Post>(snap));
 }

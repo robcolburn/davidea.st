@@ -2,25 +2,52 @@ import { h } from 'preact';
 import * as render from 'preact-render-to-string';
 import * as express from 'express';
 import Main from './pages/main';
+import ArticlePage from './pages/article';
 import { generateDefaultStyles } from './css';
 import * as posts from './services/posts';
 import * as firebase from 'firebase-admin';
+import * as utils from './utils';
+import { compileAll } from './compile';
 
-const app = express();
-const serviceAccount = require('./firebase-sa.json');
-const adminApp = firebase.initializeApp({
-  credential: firebase.credential.cert(serviceAccount),
-  databaseURL: 'https://davidea-st.firebaseio.com'
-});
+if (process.env['COMPILE']) {
+  compileAll()
+    .then(_ => process.exit(0))
+    .catch(e => { console.log(e); process.exit(1); });
+} else {
+  startServer();
+}
 
-app.use('/assets', express.static(__dirname + '/assets'));
+function startServer() {
+  const app = express();
+  const serviceAccount = require(__dirname + '/firebase-sa.json');
+  const adminApp = firebase.initializeApp({
+    credential: firebase.credential.cert(serviceAccount),
+    databaseURL: 'https://davidea-st.firebaseio.com'
+  });
 
-app.get('/', async (req, res) => {
-  const styles = generateDefaultStyles();
-  const articles = await posts.last(adminApp, 10);
-  const headlinePost = articles.shift(); 
-  const html = render(Main({ styles, articles, headlinePost }));
-  res.send(html);
-});
+  app.use('/assets', express.static(__dirname + '/assets'));
 
-app.listen(3000, () => console.log('Listening on 3000'));
+  app.get('/', async (req, res) => {
+    const styles = generateDefaultStyles();
+    const articles = await posts.last(adminApp, 10, true);
+    const headlinePost = articles.shift();
+    const html = render(Main({ styles, articles, headlinePost }));
+    res.send(html);
+  });
+
+  app.get('/articles/:title', async (req, res) => {
+    try {
+      const content = await utils.readFile(__dirname + '/posts/' + req.params.title + '.html');
+      const article = await posts.single(adminApp, req.params.title, true);
+      const styles = generateDefaultStyles();
+      const html = render(ArticlePage({ article, content, styles }));
+      res.send(html);
+    } catch (e) {
+      // 404
+      console.log(e);
+      res.status(404).send('<h1>404</h1>');
+    }
+  });
+
+  app.listen(3000, () => console.log('Listening on 3000'));
+}
