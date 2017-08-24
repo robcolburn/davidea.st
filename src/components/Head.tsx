@@ -7,6 +7,7 @@ const Head = (props) => (
     <title>{props.title}</title>
     <style>{props.styles}</style>
     <script defer src="/assets/prism.js"></script>
+    <script async src="/assets/ga.js"></script>   
   </head>
 );
 
