@@ -28,7 +28,12 @@
   border: 1px solid $de-color-orange-firebase;
 }
 
-.de-pill.de-pill.de-pill-firebase a {
+.de-pill.de-pill-essay {
+  background-color: $de-color-blue-essay;  
+  border: 1px solid $de-color-blue-essay;  
+}
+
+.de-pill.de-pill.de-pill-firebase a, .de-pill.de-pill-essay a {
   color: $de-color-white;
 }
 

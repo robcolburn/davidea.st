@@ -51,10 +51,13 @@
   border-radius: 100px;
   cursor: pointer;
   transition: background .3s ease-in-out;
+  top: 0;
+  left: 0;
 }
 
 .de-imageover-image {
   position: absolute;
   top: 0;
+  left: 0;
   opacity: 0;
 }

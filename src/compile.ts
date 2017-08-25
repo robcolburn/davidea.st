@@ -7,7 +7,8 @@ import * as blogRenderer from './render';
 
 import { Post, AdminApp } from './interfaces';
 
-const OFFLINE = !!process.env['OFFLINE'];
+const isTrue = (value) => (value == 'true');
+const OFFLINE = isTrue(process.env['OFFLINE']);
 
 export async function home(adminApp: AdminApp, limit: number) {
   try {
@@ -46,7 +47,7 @@ export async function articles(adminApp: AdminApp) {
 }
 
 export async function tags(adminApp: AdminApp) {
-  const tagKeys = await posts.tagKeys(adminApp);
+  const tagKeys = await posts.tagKeys(adminApp, OFFLINE);
   let rendered = [];
   for(let key of tagKeys) {
     const html = await blogRenderer.tag(adminApp, key);

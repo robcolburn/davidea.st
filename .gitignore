@@ -4,3 +4,4 @@ npm-debug.log
 public
 dist
 src/firebase-sa.json
+firebase-debug.log

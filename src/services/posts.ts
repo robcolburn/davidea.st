@@ -30,7 +30,14 @@ function postToSnap(posts: any, key: string) {
  * Get all tag keys used to classify articles
  * @param app 
  */
-export function tagKeys(app: AdminApp): Promise<string[]> {
+export function tagKeys(app: AdminApp, offline = false): Promise<string[]> {
+  if(offline) {
+    return new Promise((resolve, reject) => {
+      const { tagKey } = require(__dirname + '/posts.json');
+      const values = Object.keys(tagKey).map(key => tagKey[key]);
+      resolve(values);
+    });
+  }  
   const ref = app.database().ref('tagKey');
   return ref.once('value').then(snap => snapshotToArray<string>(snap));
 }

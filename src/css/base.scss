@@ -19,10 +19,7 @@ article {
   font-size: 19px;
   line-height: 40px;
 }
-html.wf-active article {
-  font-size: 20px;
-  line-height: 40px;
-}
+
 footer {
   display: flex;
   flex-direction: column;
@@ -30,4 +27,51 @@ footer {
   justify-content: center;
   padding: 60px 0;
   font-size: 18px;
+}
+.de-tagline {
+  font-size: 24px;
+  margin: 0;
+}
+
+.de-list {
+  border-left: 4px solid #aaa;
+}
+
+.de-blockquote-border {
+  border-left: 4px solid #aaa;
+  padding-left: 1rem;
+  margin: 1em 0;
+}
+
+.de-blockquote-frame {
+  margin: 1em;
+}
+
+.de-blockquote {
+  font-style: italic;
+  font-weight: 100;
+  margin: 0;
+}
+
+.de-blogimg-frame {
+  align-items: center;
+  display: flex;
+  justify-content: center;  
+  padding: 1em;
+}
+
+.de-blogimg {
+  width: 75%;
+}
+
+.de-blockquote:before, .de-blockquote:after {
+  font-size: 24px;
+}
+
+.de-blockquote:before {
+  content: '“';
+}
+
+.de-blockquote:after {
+  content: '”';
 }

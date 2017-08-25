@@ -11,7 +11,9 @@
     "build:tsc": "node_modules/.bin/tsc",
     "copy_npm": "cp node_modules/workbox-sw/build/importScripts/workbox-sw.prod.v0.0.2.js* public/",
     "build:sw": "npm run build:tsc && node build/sw-build && cp build/sw.js public/ && npm run copy_npm",
-    "compile": "yarn build && COMPILE=true node dist/index.js && cp -R src/assets public"
+    "public": "rm -rf public && mkdir public && mkdir public/articles && mkdir public/tags",
+    "compile": "yarn public && yarn build && OFFLINE=false COMPILE=true node dist/index.js && cp -R src/assets public",
+    "compile:offline": "yarn public && yarn build && OFFLINE=true COMPILE=true node dist/index.js && cp -R src/assets public"
   },
   "keywords": [],
   "author": "",

@@ -13,7 +13,8 @@ import ArticlePage from './pages/article';
 import TagPage from './pages/tag';
 import NotFoundPage from './pages/404';
 
-const OFFLINE = !!process.env['OFFLINE'];
+const isTrue = (value) => (value == 'true');
+const OFFLINE = isTrue(process.env['OFFLINE']);
 
 export async function notFound() {
   const __dirname = process.cwd() + '/server/';
