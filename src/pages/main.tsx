@@ -5,7 +5,7 @@ import Headline from '../components/Headline';
 import Footer from '../components/Footer';
 import ArticleList from '../components/ArticleList';
 
-const title = 'davidea.st - Web Development Articles';
+const title = 'davidea.st - Web Development, Firebase, and Productivity articles';
 const Main = (props) => {
   return (
     <html>

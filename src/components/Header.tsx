@@ -17,7 +17,7 @@ const Header = (props) => (
           <div class="fig-author-figure-title-header">
             <a href="/">davidea.st</a>
           </div>
-          <div class="fig-author-figure-title">Web development and Firebase articles</div>
+          <div class="fig-author-figure-title">Web development, Firebase, and Productivity articles</div>
         </figcaption>
       </figure>
 

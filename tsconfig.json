@@ -13,8 +13,9 @@
         ]
     },
     "files": [
-        "./server/index.ts",
-        "./server/compile.ts",
+        "./src/index.ts",
+        "./src/compile.ts",
+        "./src/create.ts",
         "./build/sw-build.ts"
     ]
 }

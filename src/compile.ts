@@ -36,6 +36,7 @@ export async function articles(adminApp: AdminApp) {
       article,
       html: await blogRenderer.single(article)
     }];
+    await posts.create(adminApp, article);
   }
   let renderPromises = [];
   for (let renderedArticle of renderedArticles) {

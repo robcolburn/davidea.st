@@ -9,7 +9,7 @@ const ArticlePage = (props) => {
   return (
   <html>
     
-    <Head title={props.title} styles={props.styles} />
+    <Head title={props.title} styles={props.styles} metas={article.metas} />
 
     <body>
 

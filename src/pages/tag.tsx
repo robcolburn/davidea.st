@@ -5,7 +5,7 @@ import Footer from '../components/Footer';
 import ArticleList from '../components/ArticleList';
 
 const TagPage = (props) => {
-  const title = `davidea.st - ${props.tag} Articles`;
+  const title = `davidea.st - ${props.tag} articles`;
   return (
     <html>
       <Head title={title} styles={props.styles} />

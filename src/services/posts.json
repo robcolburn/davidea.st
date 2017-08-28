@@ -1,24 +1,36 @@
 {
   "posts": {
-    "finishing-things": {
-      "date": "August 25th, 2017",
-      "title": "Finishing things",
-      "page": "/articles/finishing-things.html",
-      "whyRead": "There's a graveyard of side-projects and ideas in my Github account.",
-      "minRead": "1",
-      "author": "David East",
-      "tags": { "rant": "Rant" },
-      "pagePath": "finishing-things"
-    },    
-    "firebase-rollup-tree-shaking": {
-      "date": "March 14th, 2017",
-      "title": "Create smaller bundles with Firebase and Rollup",
-      "page": "/articles/firebase-rollup-tree-shaking.html",
-      "whyRead": "Rollup is a special JavaScript bundles that uses ES2015 modules to tree shake uneeded code. Which leads to smaller bundles. Creating smaller bundles means faster page load times. Plus, there’s some super cool new syntax to learn.",
-      "minRead": "5",
-      "author": "David East",
-      "tags": { "firebase": "Firebase", "rollup": "Rollup" },
-      "pagePath": "firebase-rollup-tree-shaking"
+    "github-graveyard" : {
+      "author" : "David East",
+      "date" : "August 28th, 2017",
+      "metas" : [{
+        "content" : "summary_large_image",
+        "name" : "card"
+      }, {
+        "content" : "@_davideast",
+        "name" : "site"
+      }, {
+        "content" : "@_davideast",
+        "name" : "creator"
+      }, {
+        "content" : "There's a graveyard of side-projects in my Github account. That's all over now.",
+        "name" : "description"
+      }, {
+        "content" : "https://davidea.st/assets/articles/github-gravetard/side-projects.png",
+        "name" : "image"
+      }, {
+        "content" : "What's in your GitHub graveyard?",
+        "name" : "title"
+      } ],
+      "minRead" : 1,
+      "page" : "/articles/github-graveyard.html",
+      "pagePath" : "github-graveyard",
+      "tags" : {
+        "essay" : "Essay"
+      },
+      "timestamp" : -1503925447104,
+      "title" : "What's in your GitHub graveyard?",
+      "whyRead" : "There's a graveyard of side-projects in my Github account. This blog almost made the list."
     }
   },
   "tagKey": {

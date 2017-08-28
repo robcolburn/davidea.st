@@ -27,7 +27,7 @@ function postToSnap(posts: any, key: string) {
 }
 
 /**
- * Get all tag keys used to classify articles
+ * Get all tag keys used to classify posts
  * @param app 
  */
 export function tagKeys(app: AdminApp, offline = false): Promise<string[]> {
@@ -97,7 +97,7 @@ export function single(app: AdminApp, path: string, offline = false): Promise<Po
  * @param app 
  * @param post 
  */
-export function create(app: AdminApp, post: Post, offline = false): Promise<Post> {
+export function create(app: AdminApp, post: Post): Promise<Post> {
   const timestamp = admin.database.ServerValue.TIMESTAMP;
   const postWithId = { ...post, timestamp };
   const { tags, pagePath } = post;
@@ -110,8 +110,7 @@ export function create(app: AdminApp, post: Post, offline = false): Promise<Post
     };
   });
   const updateObject = {
-    ...tagsUpdate,
-    [`posts/${pagePath}`]: postWithId
+    ...tagsUpdate
   };
   return app.database().ref().update(updateObject).then(_ => single(app, post.pagePath));
 }

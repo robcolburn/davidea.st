@@ -2,7 +2,7 @@ import { h } from 'preact';
 import Head from '../components/Head';
 import Header from '../components/Header';
 
-const title = 'davidea.st - Web Development Articles';
+const title = 'davidea.st - Web Development, Firebase, and Productivity articles';
 const NotFoundPage = (props) => {
   return (
     <html>
