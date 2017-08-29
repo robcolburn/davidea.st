@@ -1,0 +1,206 @@
+<section class="de-article-content de-article-content-top">
+
+  <div class="de-blockquote-border">
+    <div class="de-blockquote-frame">
+      <blockquote class="de-blockquote">
+        An npm package for building Angular Universal Apps on Firebase Hosting. <a href="#">tl;dr — Here’s the Github Repo.</a> <a href="#">Here’s a sample repo.</a>
+      </blockquote>
+    </div>
+  </div>
+
+  <h2>So you want to use Angular Universal?</h2>
+  <p>
+    There’s two pieces needed for running <a href="https://github.com/angular/universal">Angular Universal</a>: a <strong>universal bundle</strong> and a <strong>server</strong>. The Angular CLI covers the universal bundle. It’s up to you to implement your own server.
+  </p>
+
+  <h3>An Angular Universal server has two jobs:</h3>
+  <ol class="de-list">
+    <li>Dynamically render the page with Angular Universal in response to requests for routes.</li>
+    <li>Serve the app’s static assets — scripts, images, and etc.</li>
+  </ol>
+
+  <p>A typical server will have the following structure.</p>
+
+  <pre><code class="language-bash">/dist-server
+  | /static (static files)
+  | index.js (server code)
+  | main.bundle.js (universal bundle)</code></pre>
+
+  <p>
+    With Angular Universal Express Firebase building that server is only a few lines of code.
+  </p>
+
+  <pre><code class="language-bash">npm i angular-universal-express-firebase --save</code></pre>
+  
+  <p></p>
+  <h3>Angular Universal Express Firebase is a pre-packaged server with a few configuration options, that’s it.</h3>
+  <p></p>
+
+  <pre><code class="language-javascript">import * as angularUniversal from 'angular-universal-express-firebase';
+export let ssrapp = angularUniversal.trigger({
+  index: 'path/to/index.html',
+  main: 'path/to/bundle.main.js',
+  enableProdMode: true,
+  cdnCacheExpiry: 600,
+  browserCacheExpiry: 300,
+  staleWhileRevalidate: 120
+});
+</code></pre>
+
+  <p>
+    In just a few lines of code you can build a Angular Universal server. Getting it working the Angular CLI takes only a few minutes.
+  </p>
+
+  <h2>Getting started</h2>
+  <p>
+    You likely have a good idea of where to start if you've used Angular Universal before. However, this all can be confusing if this is your first time setting things up. The tutorial below takes you through the two parts of building an Angular Universal app: the <strong>universal bundle</strong> and the <strong>server</strong>.
+  </p>
+
+  <h3>Create the universal bundle</h3>
+  <p>
+    The instructions for creating a universal bundle with the Angular CLI <a href="https://github.com/angular/angular-cli/blob/master/docs/documentation/stories/universal-rendering.md">are well documented here</a>. It boils down to a handful of steps:
+  </p>
+
+  <ol class="de-list">
+    <li>Make sure you have <code>^1.3.0</code> of the <code>@angular/cli</code> installed.</li>
+    <li>Install <code>@angular/platform-server</code>.</li>
+    <li>Use the <code>BrowserModule.withServerTransition({ appId: 'myapp' });</code> method in your <code>AppModule</code>.</li>
+    <li>Create an <code>AppServerModule</code>.</li>
+    <li>Create a server main file and tsconfig to build it: <code>main.server.ts</code> and <code>tsconfig.server.json</code>.</li>
+    <li>Create a new project entry in <code>.angular-cli.json</code></li>
+    <li>Run <code>ng build —prod —app 1</code></li>
+  </ol>
+
+  <h3>Static vs. Dynamic requests</h3>
+  <p>
+    The server side rendered portion is served as a dynamic response. When the browser loads the Angular app it sends requests for the browser bundle. This should be treated as a static response since no generation is required.
+  </p>
+
+  <div class="de-blockquote-border">
+    <div class="de-blockquote-frame">
+      <blockquote class="de-blockquote">
+        Rule of thumb: the universal build, <code>dist-server</code>, is for dynamic responses and the browser build, <code>dist</code>, is for static responses.
+      </blockquote>
+    </div>
+  </div>
+
+  <p>
+    The idea here is that we want Cloud Functions to generate the HTML on the server and Firebase Hosting to serve static files.
+  </p>
+
+  <h3><code>dist</code> should be named <code>static</code></h3>
+  <p>
+    When you follow the steps above the universal build is stored in a folder named <code>dist-server</code>. Whereas the browser bundle is stored in <code>dist</code>. Your server will need to the universal build in <code>dist-server</code> to generate the server side rendered version of your app and it will also need to serve the static browser bundle stored in <code>dist</code>. Run a few commands to move dist under <code>dist-server</code> and rename <code>dist</code> to <code>static</code> to reflect it’s real purpose.
+  </p>
+
+  <pre><code class="language-bash"># Build the browser bundle
+ng build --prod
+# Build the universal bundle
+ng build --prod --app 1
+# Move the browser index.html to generate the SSR version
+mv dist/index.html dist-server/
+# Treat dist as static within dist-server
+mv dist/ dist-server/static</code></pre>  
+
+  <h3>Set up Firebase Hosting</h3>
+  <p>
+
+  </p>
+
+  <h3>Set up Cloud Functions</h3>
+  <p>
+    
+  </p>  
+
+  <h3>Configure <code>firebase.json</code></h3>
+  <p>
+    Firebase Hosting needs to know which Cloud Function to call. Open your <code>firebase.json</code> config file. Add a <code>rewrite</code> entry whose <code>source</code> is <code>"**"</code> and <code>function</code> is the same name of the Cloud Function <code>ssrapp</code>.
+  </p>
+
+  <pre><code class="language-json">{
+  "hosting": {
+    "rewrites": [
+      {
+        "source": "**",
+        "function": "ssr"
+      }
+    ]
+  }
+}</code></pre>  
+
+  <h3>Create the server</h3>
+  <p>
+    Create a <code>server</code> folder in the root of your Angular CLI project. Add an <code>index.ts</code> file and a <code>tsconfig.json</code> to build the server code.    
+  </p>
+
+  <pre><code class="language-javascript">import * as angularUniversal from 'angular-universal-express-firebase';
+export let ssrapp = angularUniversal.trigger({
+  index: 'path/to/index.html',
+  main: 'path/to/bundle.main.js',
+  enableProdMode: true,
+  cdnCacheExpiry: 600,
+  browserCacheExpiry: 300,
+  staleWhileRevalidate: 120
+});</code></pre>
+
+<pre><code class="language-json">{
+  "compilerOptions": {
+    "outDir": "../dist-server",
+    "sourceMap": true,
+    "moduleResolution": "node",
+    "target": "es5",
+    "lib": [ "es2017" ]
+  }
+}</code></pre>  
+    
+  <p>
+    The <code>tsconfig.json</code> builds the <code>index.js</code> to <code>dist-server</code>, so add that to the build script.    
+  </p>
+
+  <pre><code class="language-bash"># Build the browser bundle
+ng build --prod
+# Build the universal bundle
+ng build --prod --app 1
+# Move the browser index.html to generate the SSR version
+mv dist/index.html dist-server/
+# Treat dist as static within dist-server
+mv dist/ dist-server/static
+# Transpile TS server code
+node_modules/.bin/tsc -p server/tsconfig.json</code></pre>  
+
+  <h3>Run the server</h3>
+  <p>
+    After the build finishes run node <code>firebase serve --only hosting,functions</code> from the root of your Angular CLI project. <code>Open localhost:5000</code> and see the server-side-rendered goodness.
+  </p>
+
+  <div class="de-blogimg-frame">
+    <img class="de-blogimg" src="/assets/articles/angular-universal-express-firebase/ssr-demo.png" />
+  </div>
+
+  <h3>View Source</h3>
+  <p>
+    To make sure your app is actually rendered on the server, right click and “View Source”. You should see a bunch of HTML resembling your app.    
+  </p>
+
+  <div class="de-blogimg-frame">
+    <img class="de-blogimg" src="/assets/articles/angular-universal-express-firebase/view-source.png" />
+  </div>
+
+  <h3>Deploying</h3>
+  <p>
+    Angular Universal Express Firebase 
+  </p>
+
+  <p>
+    See the repo’s readme for more detailed steps.
+  </p>
+
+  <h3>Feedback and Contribute</h3>
+  <p>
+    We need contributors! Kick the tires, file an issue, or send a PR.
+  </p>
+  <p>
+    This module is still an alpha stage so your feedback and contributions are more than welcome. We need tutorials, better documentation, and maybe even a landing page. Reach out and we’ll respond.
+  </p>
+
+</section>

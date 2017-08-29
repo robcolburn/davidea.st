@@ -31,7 +31,41 @@
       "timestamp" : -1503925447104,
       "title" : "What's in your GitHub graveyard?",
       "whyRead" : "There's a graveyard of side-projects in my Github account. This blog almost made the list."
-    }
+    },
+    "angular-universal-express-firebase" : {
+      "author" : "David East",
+      "date" : "August 30th, 2017",
+      "metas" : [{
+        "content" : "summary_large_image",
+        "name" : "card"
+      }, {
+        "content" : "@_davideast",
+        "name" : "site"
+      }, {
+        "content" : "@_davideast",
+        "name" : "creator"
+      }, {
+        "content" : "A simple way to build Angular Universal apps on Firebase Hosting.",
+        "name" : "description"
+      }, {
+        "content" : "https://davidea.st/assets/articles/github-gravetard/side-projects.png",
+        "name" : "image"
+      }, {
+        "content" : "Introducing Angular Universal Express Firebase",
+        "name" : "title"
+      } ],
+      "minRead" : 7,
+      "page" : "/articles/angular-universal-express-firebase.html",
+      "pagePath" : "angular-universal-express-firebase",
+      "tags" : {
+        "angular" : "Angular",
+        "firebase": "Firebase",
+        "firebase-hosting": "Hosting",
+        "express": "Express"
+      },
+      "timestamp" : -1503925447104,
+      "title" : "Introducing Angular Universal Express Firebase",
+      "whyRead" : "A simple way to build Angular Universal apps on Firebase Hosting."
   },
   "tagKey": {
     "firebase": "Firebase",

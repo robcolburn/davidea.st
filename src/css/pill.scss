@@ -4,7 +4,7 @@
   border-radius: 6px;
   display: inline-block;
   transition: box-shadow .2s ease-in;
-  margin: 0 4px 0 0;
+  margin: 0 4px 8px 0;
   width: 80px; 
 }
 
@@ -23,17 +23,37 @@
   width: 80px;  
 }
 
-.de-pill.de-pill-firebase {
-  background-color: $de-color-orange-firebase;  
-  border: 1px solid $de-color-orange-firebase;
-}
-
 .de-pill.de-pill-essay {
   background-color: $de-color-blue-essay;  
   border: 1px solid $de-color-blue-essay;  
 }
 
-.de-pill.de-pill.de-pill-firebase a, .de-pill.de-pill-essay a {
+.de-pill.de-pill-firebase {
+  background-color: $de-color-orange-firebase;  
+  border: 1px solid $de-color-orange-firebase;
+}
+
+/*
+
+.de-pill.de-pill-firebase-hosting {
+  background-color: $de-color-orange-firebase-feature;  
+  border: 1px solid $de-color-orange-firebase-feature;
+}
+
+.de-pill.de-pill-angular {
+  background-color: $de-color-angular-red;
+  border: 1px solid $de-color-angular-red;
+}
+
+.de-pill.de-pill.de-pill-firebase a, 
+.de-pill.de-pill-essay a,
+.de-pill.de-pill.de-pill-firebase-hosting a,
+.de-pill.de-pill.de-pill-angular a {
+  color: $de-color-white;
+} */
+
+.de-pill.de-pill.de-pill-firebase a, 
+.de-pill.de-pill-essay a {
   color: $de-color-white;
 }
 
