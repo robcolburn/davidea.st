@@ -48,7 +48,9 @@ export async function single(post: Post) {
   const content = await utils.readFile(__dirname + post.page);
   const article = post;
   const styles = generateDefaultStyles();
-  return render(ArticlePage({ article, content, styles }));
+  const page = ArticlePage({ article, content, styles });
+  console.log(render(page));
+  return render(page);
 }
 
 export async function tag(adminApp: AdminApp, tag: string) {

@@ -1,75 +1,90 @@
 {
   "posts": {
-    "github-graveyard" : {
-      "author" : "David East",
-      "date" : "August 28th, 2017",
-      "metas" : [{
-        "content" : "summary_large_image",
-        "name" : "card"
-      }, {
-        "content" : "@_davideast",
-        "name" : "site"
-      }, {
-        "content" : "@_davideast",
-        "name" : "creator"
-      }, {
-        "content" : "There's a graveyard of side-projects in my Github account. That's all over now.",
-        "name" : "description"
-      }, {
-        "content" : "https://davidea.st/assets/articles/github-gravetard/side-projects.png",
-        "name" : "image"
-      }, {
-        "content" : "What's in your GitHub graveyard?",
-        "name" : "title"
-      } ],
-      "minRead" : 1,
-      "page" : "/articles/github-graveyard.html",
-      "pagePath" : "github-graveyard",
-      "tags" : {
-        "essay" : "Essay"
+    "github-graveyard": {
+      "author": "David East",
+      "date": "August 28th, 2017",
+      "metas": [
+        {
+          "content": "summary_large_image",
+          "name": "card"
+        },
+        {
+          "content": "@_davideast",
+          "name": "site"
+        },
+        {
+          "content": "@_davideast",
+          "name": "creator"
+        },
+        {
+          "content": "There's a graveyard of side-projects in my Github account. That's all over now.",
+          "name": "description"
+        },
+        {
+          "content": "https://davidea.st/assets/articles/github-gravetard/side-projects.png",
+          "name": "image"
+        },
+        {
+          "content": "What's in your GitHub graveyard?",
+          "name": "title"
+        }
+      ],
+      "minRead": 1,
+      "page": "/articles/github-graveyard.html",
+      "pagePath": "github-graveyard",
+      "tags": {
+        "essay": "Essay"
       },
-      "timestamp" : -1503925447104,
-      "title" : "What's in your GitHub graveyard?",
-      "whyRead" : "There's a graveyard of side-projects in my Github account. This blog almost made the list."
+      "timestamp": -1503925447104,
+      "title": "What's in your GitHub graveyard?",
+      "whyRead": "There's a graveyard of side-projects in my Github account. This blog almost made the list."
     },
-    "angular-universal-express-firebase" : {
-      "author" : "David East",
-      "date" : "August 30th, 2017",
-      "metas" : [{
-        "content" : "summary_large_image",
-        "name" : "card"
-      }, {
-        "content" : "@_davideast",
-        "name" : "site"
-      }, {
-        "content" : "@_davideast",
-        "name" : "creator"
-      }, {
-        "content" : "A simple way to build Angular Universal apps on Firebase Hosting.",
-        "name" : "description"
-      }, {
-        "content" : "https://davidea.st/assets/articles/github-gravetard/side-projects.png",
-        "name" : "image"
-      }, {
-        "content" : "Introducing Angular Universal Express Firebase",
-        "name" : "title"
-      } ],
-      "minRead" : 7,
-      "page" : "/articles/angular-universal-express-firebase.html",
-      "pagePath" : "angular-universal-express-firebase",
-      "tags" : {
-        "angular" : "Angular",
-        "firebase": "Firebase",
-        "firebase-hosting": "Hosting",
-        "express": "Express"
+    "measuring-server-side-rendering-performance-is-tricky": {
+      "author": "David East",
+      "date": "September 21st, 2017",
+      "metas": [
+        {
+          "content": "summary_large_image",
+          "name": "card"
+        },
+        {
+          "content": "@_davideast",
+          "name": "site"
+        },
+        {
+          "content": "@_davideast",
+          "name": "creator"
+        },
+        {
+          "content": "After hours and profiling and consulting people much smarter than me, I know one thing. Server-side Rendering is more nuanced than you would like.",
+          "name": "description"
+        },
+        {
+          "content": "",
+          "name": "image"
+        },
+        {
+          "content": "Why it's tricky to measure Server-side Rendering performance",
+          "name": "title"
+        }
+      ],
+      "minRead": 10,
+      "page": "measuring-server-side-rendering-performance-is-tricky.html",
+      "pagePath": "measuring-server-side-rendering-performance-is-tricky",
+      "tags": {
+        "angular": "Angular",
+        "ssr": "SSR"
       },
-      "timestamp" : -1503925447104,
-      "title" : "Introducing Angular Universal Express Firebase",
-      "whyRead" : "A simple way to build Angular Universal apps on Firebase Hosting."
+      "timestamp": -1505925296211,
+      "title": "Why it's tricky to measure Server-side Rendering performance",
+      "whyRead": "After hours and profiling and consulting people much smarter than me, I know one thing. Server-side Rendering is more nuanced than you would like."
+    }
   },
   "tagKey": {
     "firebase": "Firebase",
     "essay": "Essay",
-    "rollup": "Rollup"
-  }
+    "rollup": "Rollup",
+    "angular": "Angular",
+    "ssr": "SSR"
+  }  
 }

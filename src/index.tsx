@@ -38,7 +38,7 @@ function startServer() {
 
   app.get('/articles/:title', async (req, res) => {
     try {
-      const content = await utils.readFile(__dirname + '/posts/' + req.params.title + '.html');
+      const content = await utils.readFile(__dirname + '/articles/' + req.params.title + '.html');
       const article = await posts.single(adminApp, req.params.title, true);
       const styles = generateDefaultStyles();
       const html = render(ArticlePage({ article, content, styles }));

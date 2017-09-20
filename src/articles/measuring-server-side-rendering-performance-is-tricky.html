@@ -1,0 +1,47 @@
+<section class="de-article-content de-article-content-top">
+  
+    <div class="de-blockquote-border">
+      <div class="de-blockquote-frame">
+        <blockquote class="de-blockquote">
+            Hasn't Server-Side Rendering been around... like... forever?
+        </blockquote>
+        <p>Everyone who has heard the term SSR.</p> 
+      </div>
+    </div>
+
+    <p class="de-tagline">
+      Most things in web development are difficult. 
+    </p>
+
+    <p>
+      Despite knowing this I'm able to lie to myself at the beginning every project. "This won't be that difficult. Two days tops."  But it always happens. I hit a resistance point that forces me to stop and say, "This is gonna take awhile."       
+    </p>
+
+    <p>
+      I started this post two weeks ago as a simple "How to use SSR to boost performance" article. After hours and profiling and consulting people much smarter than me, I know one thing. Server-side Rendering is more nuanced than you would like. 
+    </p>
+
+    <p>
+      This is not a "beware SSR" article. SSR can still help with performance in certain scenarios. There's just a few quirks you should be aware of.
+    </p>
+
+    <h3>JavaScript handcuffs the content of a single-page app</h3>
+
+    <p>
+      The default setup for a single-page app is an "app" element with some scripts. The "app" element inflates into meaningful content once the scripts run.
+    </p>
+
+<pre><code class="language-html">&lt;html&gt;
+        &lt;head&gt;
+           &lt;title&gt;My non ssr app&lt;/title&gt;
+        &lt;/head&gt;
+        &lt;body&gt;
+            &lt;my-app&gt;&lt;/my-app&gt;
+            &lt;!-- "my-app" is a white page until these big scripts load --&gt;
+            &lt;script src="big-script.876aa678as463sf7.js"&gt;&lt;/script&gt;
+            &lt;script src="other-big-script.876aa678as463sf7.js"&gt;&lt;/script&gt;
+        &lt;/body&gt;
+     &lt;/html&gt;
+</code></pre>    
+
+</section>

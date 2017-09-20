@@ -1,5 +1,7 @@
 import * as admin from 'firebase-admin';
+import * as fs from 'fs';
 import { Post, AdminApp, DataSnapshot } from '../interfaces';
+import * as merge from 'deepmerge';
 
 /**
  * Create an array from a Firebase Database Snapshot
@@ -67,8 +69,10 @@ export function last(app: AdminApp, limit: number, offline = false): Promise<Pos
   if(offline) {
     return new Promise((resolve, reject) => {
       const { posts } = require(__dirname + '/posts.json');
-      const snap = postToSnap(posts, 'posts');      
-      resolve(snapshotToArray<Post>(snap));
+      const snap = postToSnap(posts, 'posts');  
+      const arr = snapshotToArray<Post>(snap);
+      const rev = arr.reverse();    
+      resolve(rev);
     });
   }    
   const query = app.database().ref('posts').orderByChild('timestamp').limitToLast(limit);
@@ -97,7 +101,7 @@ export function single(app: AdminApp, path: string, offline = false): Promise<Po
  * @param app 
  * @param post 
  */
-export function create(app: AdminApp, post: Post): Promise<Post> {
+export function create(app: AdminApp, post: Post, offline = false): Promise<Post> {
   const timestamp = admin.database.ServerValue.TIMESTAMP;
   const postWithId = { ...post, timestamp };
   const { tags, pagePath } = post;
@@ -109,10 +113,15 @@ export function create(app: AdminApp, post: Post): Promise<Post> {
       [`tagKey/${tag}`]: tag
     };
   });
-  const updateObject = {
-    ...tagsUpdate
-  };
-  return app.database().ref().update(updateObject).then(_ => single(app, post.pagePath));
+  if (offline) {
+    return new Promise((resolve, reject) => {
+      const data = require(__dirname + '/posts.json');
+      const newData = merge.all([data, tagsUpdate]);
+      fs.writeFileSync(__dirname + '/posts.json', JSON.stringify(newData));
+      resolve(single(app, pagePath, offline));
+    });
+  }
+  return app.database().ref().update(tagsUpdate).then(_ => single(app, post.pagePath));
 }
 
 /**
@@ -120,7 +129,14 @@ export function create(app: AdminApp, post: Post): Promise<Post> {
  * @param app 
  * @param tag 
  */
-export async function tag(app: AdminApp, tag: string, offline = false): Promise<Post[]> {
+export async function tag(app: AdminApp, tag: string, offline = false) {
+  if(offline) {
+    return new Promise((resolve, reject) => {
+      const { posts } = require(__dirname + '/posts.json');
+      const snap = postToSnap(posts, 'posts');      
+      resolve(snapshotToArray<Post>(snap));
+    });
+  }
   const query = admin.database().ref('tags').child(tag);
   return await query.once('value').then(snap => snapshotToArray<Post>(snap));
 }
