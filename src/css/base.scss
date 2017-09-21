@@ -55,11 +55,18 @@ footer {
   margin: 0;
 }
 
-.de-blogimg-frame {
+.de-blogimg-frame, .de-blogimg-frame-full {
   align-items: center;
   display: flex;
-  justify-content: center;  
+  justify-content: center;
+}
+
+.de-blogimg-frame {
   padding: 1em;
+}
+
+.de-blogimg-frame-full img {
+  width: 100%;
 }
 
 .de-blogimg {

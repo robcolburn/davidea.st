@@ -69,7 +69,7 @@
         }
       ],
       "minRead": 10,
-      "page": "measuring-server-side-rendering-performance-is-tricky.html",
+      "page": "/articles/measuring-server-side-rendering-performance-is-tricky.html",
       "pagePath": "measuring-server-side-rendering-performance-is-tricky",
       "tags": {
         "angular": "Angular",

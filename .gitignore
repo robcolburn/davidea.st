@@ -5,3 +5,4 @@ public
 dist
 src/firebase-sa.json
 firebase-debug.log
+.DS_Store

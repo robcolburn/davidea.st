@@ -36,7 +36,9 @@ export async function articles(adminApp: AdminApp) {
       article,
       html: await blogRenderer.single(article)
     }];
-    //await posts.create(adminApp, article, OFFLINE);
+    if(!OFFLINE) {
+      await posts.create(adminApp, article, OFFLINE);
+    }
   }
   let renderPromises = [];
   for (let renderedArticle of renderedArticles) {

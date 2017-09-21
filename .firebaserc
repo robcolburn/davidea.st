@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "davidea-st"
+    "default": "davidea-st",
+    "staging": "davidea-staging"
   }
 }
