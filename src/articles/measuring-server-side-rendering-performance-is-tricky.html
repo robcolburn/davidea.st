@@ -139,7 +139,7 @@
   </p>
 
   <p>
-    Test after test Webpagetest gave me better metrics for the Non-SSR site. The Load Time and Interactive times were better. Something stood out to me. Start Render was and Speed Index were faster on the SSR site. This didn't add up to me.
+    Test after test Webpagetest gave me better metrics for the Non-SSR site. The Load Time and Interactive times were better. Something stood out to me. Start Render was and Speed Index were faster on the SSR site. This didn't add up.
   </p>
 
   <p>
@@ -218,7 +218,7 @@
     <li><strong>~3500ms</strong>: Angular, its polyfills, and the application code loads.</li>
     <li><strong>~3800ms</strong>: JavaScript execution finishes. Site is reported as interactive.</li>
     <li><strong>~4100ms</strong>: Load time. The Document Complete event fires. Framework sends HTTP requests for data.</li>
-    <li><strong>~6200ms</strong>: Payload received from API calls. Angular renders the meaningful content, First Meaningful Paint occurs.</li>
+    <li><strong>~6200ms</strong>: Payload received from API calls. Angular renders the meaningful content.</li>
     <li>
         <a href="https://www.webpagetest.org/chrome/inspector-20170320/inspector.html?experiments=true&loadTimelineFromURL=/getTimeline.php?timeline=t:170920_VF_82a7877ce2aa82f433d021b19b106375,r:2,c:0">Timeline</a>
       </li>
@@ -292,7 +292,7 @@
 
   <p>
     In this scenario SSR was beneficial. The cost of waiting for API calls to finish on the client was too high. The Non-SSR
-    site became interactive sooner. But, an interactive site with no content isn't really the interactive we're looking for.
+    site became interactive sooner. But, an interactive site without meaningful content isn't really the interactive we're looking for.
   </p>
 
   <h3>SSR comes at a cost</h3>
@@ -343,8 +343,12 @@
   </p>
 
   <p>
-    Without JavaScript the site is interactive in 1.8 seconds. 
+    Without JavaScript the site loads and is <a href="https://www.webpagetest.org/result/170921_TS_9ce3797ea2cbce216f7ab274f4cb01b9/">interactive in 2 seconds</a>.
   </p>
+
+  <div class="de-blogimg-frame">
+      <iframe src="https://www.webpagetest.org/video/view.php?id=170921_TS_9ce3797ea2cbce216f7ab274f4cb01b9.3.0&embed=1&width=408&height=592" width="408" height="592"></iframe>
+  </div>
 
   <h3>SSR is not "one-size-fits-all"</h3>
   <p>
