@@ -135,6 +135,10 @@
 <section class="de-article-content">
 
   <p>
+    <a href="https://www.webpagetest.org/result/170920_VF_82a7877ce2aa82f433d021b19b106375/#run2">Non-SSR test run</a>. <a href="https://www.webpagetest.org/result/170920_E1_94e8c42994184338d290319a68fc9d00/#run3">SSR test run.</a>
+  </p>
+
+  <p>
     Test after test Webpagetest gave me better metrics for the Non-SSR site. The Load Time and Interactive times were better. Something stood out to me. Start Render was and Speed Index were faster on the SSR site. This didn't add up to me.
   </p>
 
@@ -163,10 +167,13 @@
 <section class="de-article-content de-article-content-top">
 
   <ul class="de-list">
-    <li>~2400ms: HTML and CSS loads.The meaningful content appears. </li>
-    <li>~3800ms: Angular, its polyfills, and the application code loads. </li>
-    <li>~4300ms: JavaScript execution finishes. The site is interactive. </li>
-    <li>~4900ms: Load Time. The Document Complete event fires. </li>
+    <li><strong>~2400ms</strong>: HTML and CSS loads.The meaningful content appears. </li>
+    <li><strong>~3800ms</strong>: Angular, its polyfills, and the application code loads. </li>
+    <li><strong>~4300ms</strong>: JavaScript execution finishes. The site is interactive. </li>
+    <li><strong>~4900ms</strong>: Load Time. The Document Complete event fires. </li>
+    <li>
+      <a href="https://www.webpagetest.org/chrome/inspector-20170320/inspector.html?experiments=true&loadTimelineFromURL=/getTimeline.php?timeline=t:170920_E1_94e8c42994184338d290319a68fc9d00,r:3,c:0">Timeline</a>
+    </li>
   </ul>
 
   <p>
@@ -207,11 +214,14 @@
 <section class="de-article-content de-article-content-top">
 
   <ul class="de-list">
-    <li>~2400ms: HTML and CSS loads. No meaningful content.</li>
-    <li>~3500ms: Angular, its polyfills, and the application code loads.</li>
-    <li>~3800ms: JavaScript execution finishes. Site is reported as interactive.</li>
-    <li>~4100ms: Load time. The Document Complete event fires. Framework sends HTTP requests for data.</li>
-    <li>~6200ms: Payload received from API calls. Angular renders the meaningful content, First Meaningful Paint occurs.</li>
+    <li><strong>~2400ms</strong>: HTML and CSS loads. No meaningful content.</li>
+    <li><strong>~3500ms</strong>: Angular, its polyfills, and the application code loads.</li>
+    <li><strong>~3800ms</strong>: JavaScript execution finishes. Site is reported as interactive.</li>
+    <li><strong>~4100ms</strong>: Load time. The Document Complete event fires. Framework sends HTTP requests for data.</li>
+    <li><strong>~6200ms</strong>: Payload received from API calls. Angular renders the meaningful content, First Meaningful Paint occurs.</li>
+    <li>
+        <a href="https://www.webpagetest.org/chrome/inspector-20170320/inspector.html?experiments=true&loadTimelineFromURL=/getTimeline.php?timeline=t:170920_VF_82a7877ce2aa82f433d021b19b106375,r:2,c:0">Timeline</a>
+      </li>
   </ul>
 
   <p>
@@ -272,9 +282,11 @@
     trigger a push back in interactivity. This puts the user in an uncanny valley. The site is interactive, but it's useless until the data returns.
   </p>
 
-  <p>
-    It's also worth pointing out that Angular was able to process this change in 26ms on a low powered device.
-  </p>
+  <ul class="de-list de-list-no-type">
+    <li>
+      It's also worth pointing out that Angular was able to process this change in 26ms on a low powered device.
+    </li>
+  </ul>
 
   <h3>SSR won in this scenario</h3>
 
@@ -339,10 +351,10 @@
     Server-side rendering is a great technique for prioritizing content. However, it's far from having your cake and eating it too. It's not going to boost everyone's performance. Use your judgement to choose the technique that best fits your situation.
   </p>
 
-  <p>
+  <div class="de-thx">
     <em>
       Thanks for making it all the way to the bottom! If you enjoyed the piece please gave it a share. If you have any questions feel free to <a href="https://twitter.com/_davideast">reach out to me on Twitter</a>.
     </em>
-  </p>
+  </div>
 
 </section>

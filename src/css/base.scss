@@ -39,6 +39,10 @@ footer {
   border-left: 4px solid #aaa;
 }
 
+.de-list.de-list-no-type {
+  list-style-type: none;
+}
+
 .de-blockquote-border {
   border-left: 4px solid #aaa;
   padding-left: 1rem;
@@ -87,4 +91,12 @@ footer {
 
 .de-blockquote-attribution {
   font-size: 14px;
+}
+
+.de-thx {
+  border: 1px solid rgba(0,0,0, .1);
+  background: rgba(0,0,0,.07);
+  border-radius: 6px;
+  color: rgba(0,0,0,0.8);
+  padding: .5em;
 }

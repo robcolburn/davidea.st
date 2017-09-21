@@ -49,7 +49,6 @@ export async function single(post: Post) {
   const article = post;
   const styles = generateDefaultStyles();
   const page = ArticlePage({ article, content, styles });
-  console.log(render(page));
   return render(page);
 }
 
