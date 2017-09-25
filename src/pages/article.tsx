@@ -5,30 +5,16 @@ import Footer from '../components/Footer';
 import ArticleTitle from '../components/ArticleTitle';
 
 const ArticlePage = (props) => {
-  const article = props.article;
+  const data = props.data;
   return (
   <html>
     
-    <Head title={props.title} styles={props.styles} metas={article.metas} />
+    <Head title={props.title} styles={props.styles} metas={data.metas} />
 
     <body>
 
       <Header />
-    
-      <div class="de-grid de-row-double de-padding">
-  
-        <article class="de-post">
-  
-          <section class="de-article-content">
-            <ArticleTitle article={article} />
-          </section>
-
-          <div dangerouslySetInnerHTML={{__html: props.content}}></div>
-          
-        </article>
-  
-      </div>
-  
+      {props.article}
       <Footer />
   
       <script defer src="/assets/prism.js"></script>

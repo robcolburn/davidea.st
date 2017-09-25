@@ -1,6 +1,7 @@
 import * as express from 'express';
 import * as fs from 'fs';
 import * as admin from 'firebase-admin';
+import { h } from 'preact';
 
 import * as posts from './services/posts';
 import { Post, AdminApp } from './interfaces';
@@ -45,10 +46,11 @@ export async function singlePost(adminApp: AdminApp, title: string) {
 }
 
 export async function single(post: Post) {
-  const content = await utils.readFile(__dirname + post.page);
-  const article = post;
+  const Article = require(__dirname + post.page).default;
+  const article = <Article article={post} />
+  const data = post;
   const styles = generateDefaultStyles();
-  const page = ArticlePage({ article, content, styles });
+  const page = ArticlePage({ article, data, styles });
   return render(page);
 }
 

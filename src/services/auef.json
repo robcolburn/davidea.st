@@ -1,6 +1,6 @@
 {
     "author" : "David East",
-    "date" : "August 30th, 2017",
+    "date" : "September 26th, 2017",
     "metas" : [{
       "content" : "summary_large_image",
       "name" : "card"
@@ -11,25 +11,25 @@
       "content" : "@_davideast",
       "name" : "creator"
     }, {
-      "content" : "A simple way to build Angular Universal apps on Firebase Hosting.",
+      "content" : "This guide takes you from zero to production.",
       "name" : "description"
     }, {
-      "content" : "https://davidea.st/assets/articles/github-gravetard/side-projects.png",
+      "content" : "",
       "name" : "image"
     }, {
-      "content" : "Introducing Angular Universal Express Firebase",
+      "content" : "The beginner's guide to Angular Universal",
       "name" : "title"
     } ],
-    "minRead" : 1,
-    "page" : "/articles/angular-universal-express-firebase.html",
-    "pagePath" : "angular-universal-express-firebase",
+    "minRead" : 8,
+    "page" : "/articles/the-beginners-guide-to-angular-universal.jsx",
+    "pagePath" : "the-beginners-guide-to-angular-universal",
     "tags" : {
       "angular" : "Angular",
       "firebase": "Firebase",
       "firebase-hosting": "Hosting",
       "express": "Express"
     },
-    "timestamp" : -1503925447104,
-    "title" : "Introducing Angular Universal Express Firebase",
-    "whyRead" : "A simple way to build Angular Universal apps on Firebase Hosting."
+    "timestamp" : -1506302638249,
+    "title" : "The beginner's guide to Angular Universal",
+    "whyRead" : "This guide takes you from zero to production."
 }
