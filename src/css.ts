@@ -11,7 +11,8 @@ export const defaultFiles = () => [
   '/css/pill.scss',
   '/css/article.scss',
   '/css/post.scss',
-  '/css/prismbasic.scss'
+  '/css/prismbasic.scss',
+  '/css/codebox.scss'
 ].map(file => __dirname + file);
 
 export const styles404 = () => [

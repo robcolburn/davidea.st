@@ -1,0 +1,42 @@
+// https://github.com/Microsoft/vscode/blob/master/extensions/theme-seti/icons/vs-seti-icon-theme.json
+
+.de-codeboxfull {
+  background: #28323F;
+}
+
+.de-codeboxfull-file {
+  background: #1d252f !important;
+  color: #fff;
+  font-size: 16px;
+  padding: 0 .3em;
+}
+
+.de-codeboxfull-icon {
+  font-family: 'SetiIcons';
+  display: flex;
+  font-size: 22px;
+}
+
+.de-codeboxfull-icon.language-json:before {
+  font-family: 'SetiIcons';
+  color: #cbcb41;
+  content: '\E046';
+}
+
+.de-codeboxfull-icon.language-ts:before {
+  font-family: 'SetiIcons';
+  color: #519aba;
+  content: '\E07A';
+}
+
+.de-codeboxfull-tab {
+  display: flex;
+  min-width: 9em;
+  max-width: 100%;
+  align-items: center;
+  padding: 1em;
+  background: #1d252f;
+  border-bottom: 1px solid #12171d;
+  border-right: 1px solid #12171d;
+  padding: .5em 1em;
+}

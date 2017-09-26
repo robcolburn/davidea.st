@@ -30,7 +30,7 @@
         }
       ],
       "minRead": 1,
-      "page": "/articles/github-graveyard.html",
+      "page": "/articles/github-graveyard.js",
       "pagePath": "github-graveyard",
       "tags": {
         "essay": "Essay"
@@ -69,7 +69,7 @@
         }
       ],
       "minRead": 10,
-      "page": "/articles/measuring-server-side-rendering-performance-is-tricky.html",
+      "page": "/articles/measuring-server-side-rendering-performance-is-tricky.js",
       "pagePath": "measuring-server-side-rendering-performance-is-tricky",
       "tags": {
         "angular": "Angular",
@@ -102,7 +102,7 @@
         "name" : "title"
       } ],
       "minRead" : 8,
-      "page" : "/articles/the-beginners-guide-to-angular-universal.jsx",
+      "page" : "/articles/the-beginners-guide-to-angular-universal.js",
       "pagePath" : "the-beginners-guide-to-angular-universal",
       "tags" : {
         "angular" : "Angular",
