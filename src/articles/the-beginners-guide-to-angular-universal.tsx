@@ -217,6 +217,59 @@ private isNotBrowser() {
   return this.platformId !== 'browser';
 }`;
 
+const SAMPLE_STATIC_DIR = `import 'zone.js/dist/zone-node';
+import * as express from 'express';
+import { renderModuleFactory } from '@angular/platform-server';
+import * as fs from 'fs-extra';
+
+const app = express();
+// Assign a static directory
+app.use(express.static(__dirname + '/dist'));
+app.get('**', async (request, response) => {
+    // renderModuleFactory parameters
+    const url = request.path;
+    const { AppServerModuleNgFactory } = require(__dirname + '/main.bundle');
+    const document = await fs.readFile(__dirname + '/index.html', 'utf8');
+    const options = { document, url };
+    
+    try {
+      // generate the server-side rendered html
+      const html = await renderModuleFactory(AppServerModuleNgFactory, options);
+      response.send(html);
+    } catch(e) {
+      console.log(e);
+      response.status(500).send('¯\_(ツ)_/¯');
+    }
+});
+
+const PORT = process.env.PORT || 3022;
+app.listen(PORT, () => { console.log(\`Listening on \${PORT}...\`); });`;
+
+const SAMPLE_FUNCTIONS_DIST_APP_ENTRY = `{
+  "root": "src",
+  "outDir": "functions/dist",
+  "assets": [
+    "assets",
+    "favicon.ico"
+  ],
+  "index": "index.html",
+  "main": "main.ts",
+  "polyfills": "polyfills.ts",
+  "test": "test.ts",
+  "tsconfig": "tsconfig.app.json",
+  "testTsconfig": "tsconfig.spec.json",
+  "prefix": "app",
+  "styles": [
+    "styles.css"
+  ],
+  "scripts": [],
+  "environmentSource": "environments/environment.ts",
+  "environments": {
+    "dev": "environments/environment.ts",
+    "prod": "environments/environment.prod.ts"
+  }
+}`;
+
   return (
   <div>
     <div class="de-grid de-row-double de-padding">
@@ -240,20 +293,19 @@ private isNotBrowser() {
           </p>
 
           <p>
-            Getting started isn’t difficult. It’s powerful but it’s not magic. The goal of this guide is not only to get you started but to give you a deeper understanding of how Angular Universal works. This guide takes you from zero to production with these steps:
+            Getting started isn’t difficult. It’s powerful but it’s not magic. The goal of this guide is not only to get you started but to give you a deeper understanding of how Angular Universal works. This guide takes you from zero to universal with these steps:
           </p>
 
           <ul class="de-list">
             <li>Create an minimal Angular build with the CLI.</li>
-            <li>Configure the CLI to create a Universal Bundle.</li>
-            <li>Set up a server to generate Angular Universal content.</li>
-            <li>Configure the server to serve content over a CDN.</li>
-            <li>Deploy to production.</li>
-            <li>Read the source code to learn more than just configuration.</li>
+            <li>Configure the CLI to create a universal bundle.</li>
+            <li>Set up a server.</li>
+            <li>Generate Angular Universal content per route.</li>
+            <li>Configure serving for static files.</li>
           </ul>   
 
           <p>
-          There’s some tedious configuration in the beginning, but then it’s smooth sailing. Open up a terminal. Let’s begin.
+            There’s some tedious configuration in the beginning, but then it’s smooth sailing. Open up a terminal. Let’s begin.
           </p>
 
           <h3>Angular Universal is two parts</h3>
@@ -271,7 +323,7 @@ private isNotBrowser() {
 
     <div class="de-grid de-padding">
       <article class="de-post">
-          <section class="de-article-content">
+        <section class="de-article-content">
 
           <p>
             Your Angular code won't run on a server out-of-the-box. The module format is incorrect and your code may be coupled to the browser. To get your code running on a server you need a <strong>universal bundle</strong>. 
@@ -586,45 +638,59 @@ private isNotBrowser() {
           At this point you have a decision to make. You can either set up the server to deliver these static assets or serve them over a Content Delivery Network (CDN).
         </p>
 
+        <CodeBox 
+          code={SAMPLE_PLATFORM_ID}
+          language="ts" />
+
         <p>
-          Delivering static assets from the server is simple. You need to change your configuration to build the browser app to the <code>functions/dist</code> folder. This way the files are located with the server. Then all you need to do is use express's <code>static</code> method to designate the <code>dist</code> folder as static. This ensures the files are not processed by the <code>**</code> handler and are delivered "as-is".
+          Delivering static assets from the server is simple. You need to change your configuration to build the browser app to the <code>functions/dist</code> folder. 
+        </p>
+
+        <CodeBox 
+            code={SAMPLE_FUNCTIONS_DIST_APP_ENTRY} 
+            filePath="/.angular-cli.json" 
+            language="json" />
+
+        <p>
+          This way the files are located with the server. Then all you need to do is use express's <code>static</code> method to designate the <code>dist</code> folder as static. This ensures the files are not processed by the <code>**</code> handler and are delivered "as-is".
+        </p>
+
+        <CodeBox 
+          code={SAMPLE_STATIC_DIR}
+          filePath="/server/index.ts" 
+          language="ts" />
+
+        <h3>You're done!</h3>
+        <p>
+          You've done it. The tedious part is over. The configuration. The build files. The server. You have a bonafide Angular Universal site. Now you just have to worry about deployment. 
+        </p>
+
+        <h3>A note on performance</h3>
+        <p>
+          This is not the most performant way to deliver your site. Delivering files from a single server in a single location will incur high latency for most users. Your files can travel only at a fraction of the speed of light and will incur network overhead as well. The fastest way to deliver your site is to get as close to the user as possible. This is what a CDN does.
+        </p>
+
+        <p>          
+          A CDN places your assets phyiscally close to the user by copying them in edge servers across the world. Every user will have the files served from an edge near them.
         </p>
 
         <p>
-          However, this is not the most performant way to load your site. A CDN places your assets phyiscally close to the user by copying them in edge servers across the world. Every user will have the files served from an edge near them. This is much faster and the approach you will be taking for deployment. 
+          I deploy my Angular Universal sites (well, all my sites) to Firebase Hosting. Firebase Hosting is backed by a CDN and it handles asset deployment, CDN cache purging, and all the other complicated things. 
         </p>
 
         <p>
-          Speaking of deployment, let's set that up.
+          In the next article I'll cover how deploy and deliver your Angular Universal site on Firebase Hosting.
         </p>
+
+        <div class="de-thx">
+          <em>
+            Thanks for making it all the way to the bottom! If you enjoyed the piece please gave it a share. If you have any questions feel free to <a href="https://twitter.com/_davideast">reach out to me on Twitter</a>.
+          </em>
+        </div>
 
         </section>
       </article>
     </div>
-
-    <h2 class="de-part-h2">Bonus round: Deployment</h2>
-
-    <div class="de-grid de-padding">
-      <article class="de-post">
-        <section class="de-article-content">
-
-        <p>
-          This guide uses Cloud Functions run the Angular Universal server and Firebase Hosting to deliver the assets. Firebase Hosting is backed by a CDN, which means there's no CDN setup required from you. Just deploy your files and you're done.
-        </p>
-
-        <p>
-          <strong>Disclaimer</strong>: I work for Google on Firebase and specifically Firebase Hosting. You can use whatever hosting provider you like. The guide to this point has been provider agnostic. You can easily configure the project to deploy to any provider at this point. 
-        </p>
-
-        <h3>Create an account and install the Firebase CLI</h3>
-        <p>
-          
-        </p>
-
-        </section>
-      </article>
-    </div>
-
   </div>
   );
 };
