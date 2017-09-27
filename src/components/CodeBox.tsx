@@ -11,12 +11,17 @@ const CodeBox = (props) => {
   if(language === 'ts') {
     languageClass = `language-javascript`;
   } 
-  return (
-    <div className="de-codeboxfull">
-      <div className="de-codeboxfull-tab">
+  let tab;
+  if(filePath) {
+    tab = 
+      (<div className="de-codeboxfull-tab">
         <span className={iconClass}></span>
         <code className="de-codeboxfull-file">{filePath}</code>
-      </div>
+      </div>);
+  }
+  return (
+    <div className="de-codeboxfull">
+      {tab}
       <pre><code className={languageClass}>{code}</code></pre>
     </div>
   );
