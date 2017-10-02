@@ -106,8 +106,7 @@
       "pagePath" : "the-beginners-guide-to-angular-universal",
       "tags" : {
         "angular" : "Angular",
-        "firebase": "Firebase",
-        "firebase-hosting": "Hosting",
+        "ssr": "SSR",
         "express": "Express"
       },
       "timestamp" : -1506302638249,

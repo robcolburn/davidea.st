@@ -149,8 +149,11 @@ chunk {1} styles.bundle.css (styles) 0 bytes [entry] [rendered]`;
 
   const SAMPLE_SERVER_EXPRESS_SETUP = `import 'zone.js/dist/zone-node';
 import * as express from 'express';
+import { enableProdMode } from '@angular/core';
 import { renderModuleFactory } from '@angular/platform-server';
 import * as fs from 'fs-extra';
+
+enableProdMode();
 
 const app = express();
 app.get('**', async (request, response) => {
@@ -164,6 +167,7 @@ app.listen(PORT, () => { console.log(\`Listening on \${PORT}...\`); });`;
 
 const SAMPLE_SERVER_UNIVERSAL_SETUP = `import 'zone.js/dist/zone-node';
 import * as express from 'express';
+import { enableProdMode } from '@angular/core';
 import { renderModuleFactory } from '@angular/platform-server';
 import * as fs from 'fs-extra';
 
@@ -181,6 +185,7 @@ app.listen(PORT, () => { console.log(\`Listening on \${PORT}...\`); });`;
 
 const SAMPLE_SERVER_UNIVERSAL_FINAL = `import 'zone.js/dist/zone-node';
 import * as express from 'express';
+import { enableProdMode } from '@angular/core';
 import { renderModuleFactory } from '@angular/platform-server';
 import * as fs from 'fs-extra';
 
@@ -211,11 +216,7 @@ const SAMPLE_VIEW_SOURCE = `<!DOCTYPE html><html lang="en"><head><meta charset="
 </p>
 </app-root><script type="text/javascript" src="inline.0895b7ae96be5a907c9a.bundle.js"></script><script type="text/javascript" src="polyfills.81bfb9793231bc1ae345.bundle.js"></script><script type="text/javascript" src="vendor.ea461c51d3a0d717e482.bundle.js"></script><script type="text/javascript" src="main.caefc3854b783c29b2ef.bundle.js"></script></body></html>`;
 
-const SAMPLE_PLATFORM_ID = `constructor(@Inject(PLATFORM_ID) private platformId: string) { }
-
-private isNotBrowser() {
-  return this.platformId !== 'browser';
-}`;
+const SAMPLE_PLATFORM_ID = `import { isPlatformBrowser } from '@angular/common;`;
 
 const SAMPLE_STATIC_DIR = `import 'zone.js/dist/zone-node';
 import * as express from 'express';
@@ -289,7 +290,7 @@ const SAMPLE_FUNCTIONS_DIST_APP_ENTRY = `{
           </div>
           
           <p class="de-tagline">
-            Angular Universal can help you improve SEO, perceived performance, and even in <a href="https://davidea.st/articles/measuring-server-side-rendering-performance-is-tricky">some cases page load performance itself</a>.
+            Angular Universal can help you improve SEO, perceived performance, and even in <a href="/articles/measuring-server-side-rendering-performance-is-tricky">some cases page load performance itself</a>.
           </p>
 
           <p>
@@ -430,7 +431,7 @@ const SAMPLE_FUNCTIONS_DIST_APP_ENTRY = `{
           </p>
 
           <p>
-            Open the <code>.angular-cli.json</code> file. This file contains the default configuration options. The <code>"apps"</code> section is the one you care about. To create a universal bundle you need to create a separate "app" entry. Add the following entry to the <code>"apps"</code> array.
+            Open the <code>.angular-cli.json</code> file. This file contains the default configuration options. To create a universal bundle you need to create a separater <code>"app"</code> entry. Add the following entry to the <code>"apps"</code> array.
           </p>
 
           <CodeBox 
@@ -600,7 +601,7 @@ const SAMPLE_FUNCTIONS_DIST_APP_ENTRY = `{
         </p>
 
         <p>
-          I've hit this error when I've used the <code>PerformanceObserver</code> API. One solution is to inject the <code>PLATFORM_ID</code> and guard against the DOM API.
+          I've hit this error when I've used the <code>PerformanceObserver</code> API. One solution is to use the <code>isPlatformBrowser</code> helper function to guard against browser dependent code.
         </p>
 
         <CodeBox 
@@ -627,7 +628,7 @@ const SAMPLE_FUNCTIONS_DIST_APP_ENTRY = `{
         <section class="de-article-content">
 
         <p>
-          The only route set up is a <code>**</code> greedy route. This means every single <code>GET</code> request is processed by this handler. When the browser requests your static assets the server will run Angular Universal for that url. For the <code>/</code> route this will generate the proper Angular Universal HTML.          
+          The only route is a <code>**</code> greedy route. This means every single <code>GET</code> request is processed by this handler. When the browser requests your static assets the server will run Angular Universal for that url. For the <code>/</code> route this will generate the proper Angular Universal HTML.          
         </p>
         <p>
           However, when the browser requests a static asset like the vendor bundle this will cause an error. You receive the <code>Unexpected token &lt;</code> error because the server is sending back the default HTML and not the browser bundle. The browser is expecting JavaScript and it's getting HTML.
@@ -637,10 +638,6 @@ const SAMPLE_FUNCTIONS_DIST_APP_ENTRY = `{
         <p>
           At this point you have a decision to make. You can either set up the server to deliver these static assets or serve them over a Content Delivery Network (CDN).
         </p>
-
-        <CodeBox 
-          code={SAMPLE_PLATFORM_ID}
-          language="ts" />
 
         <p>
           Delivering static assets from the server is simple. You need to change your configuration to build the browser app to the <code>functions/dist</code> folder. 
