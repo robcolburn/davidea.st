@@ -14,6 +14,7 @@ export interface Post {
   whyRead: string;
   pagePath: string;
   timestamp?: number;
+  metas: any[];
 }
 
 export interface TypedSnapshot<T> extends DataSnapshot {

@@ -285,7 +285,7 @@ const SAMPLE_FUNCTIONS_DIST_APP_ENTRY = `{
 
           <div class="de-thx">
             <em>
-              This article is based off {versions.ANGULAR} of Angular Universal, {versions.ANGULAR} Angular, and {versions.CLI} of the Angular CLI.
+              I'm starting a newsletter! One-topic covered in-depth each week, plus a bunch of links on the latest in frontend development topics. <a href="https://frontendweekly.news">Sign up here!</a>
             </em>
           </div>
           
@@ -341,6 +341,12 @@ const SAMPLE_FUNCTIONS_DIST_APP_ENTRY = `{
           <p>
             The good news is the Angular CLI makes this easy. The bad? This is where the tedious config starts. 
           </p>
+
+          <div class="de-thx">
+            <em>
+              This article is based off {versions.ANGULAR} of Angular Universal, {versions.ANGULAR} Angular, and {versions.CLI} of the Angular CLI.
+            </em>
+          </div>
 
           <h3>Install the Angular CLI</h3>
           <p>
@@ -668,7 +674,7 @@ const SAMPLE_FUNCTIONS_DIST_APP_ENTRY = `{
         </p>
 
         <p>          
-          A CDN places your assets phyiscally close to the user by copying them in edge servers across the world. Every user will have the files served from an edge near them.
+          A CDN places your assets physically close to the user by copying them in edge servers across the world. Every user will have the files served from an edge near them.
         </p>
 
         <p>
@@ -681,7 +687,7 @@ const SAMPLE_FUNCTIONS_DIST_APP_ENTRY = `{
 
         <div class="de-thx">
           <em>
-            Thanks for making it all the way to the bottom! If you enjoyed the piece please gave it a share. If you have any questions feel free to <a href="https://twitter.com/_davideast">reach out to me on Twitter</a>.
+            Want more content like this? I'm starting a newsletter! <a href="https://frontendweekly.news">Sign up here!</a>
           </em>
         </div>
 

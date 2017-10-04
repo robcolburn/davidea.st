@@ -175,6 +175,9 @@ const SAMPLE_DIST_APP_ENTRY = `{
               code="firebase init functions"
               language="bash" />
             
+            <p>
+              TODO: Go through config settings to be thorough.
+            </p>
 
           </section>
         </article>

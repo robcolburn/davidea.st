@@ -366,7 +366,7 @@ const Article = (props) => {
 
           <div class="de-thx">
             <em>
-              Thanks for making it all the way to the bottom! If you enjoyed the piece please gave it a share. If you have any questions feel free to <a href="https://twitter.com/_davideast">reach out to me on Twitter</a>.
+              Want more content like this? I'm starting a newsletter! <a href="https://frontendweekly.news">Sign up here!</a>
             </em>
           </div>
 
