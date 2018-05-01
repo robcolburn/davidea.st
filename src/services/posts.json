@@ -80,38 +80,86 @@
       "whyRead": "After hours and profiling and consulting people much smarter than me, I know one thing. Server-side Rendering is more nuanced than you would like."
     },
     "the-beginners-guide-to-angular-universal": {
-      "author" : "David East",
-      "date" : "September 26th, 2017",
-      "metas" : [{
-        "content" : "summary_large_image",
-        "name" : "card"
-      }, {
-        "content" : "@_davideast",
-        "name" : "site"
-      }, {
-        "content" : "@_davideast",
-        "name" : "creator"
-      }, {
-        "content" : "This guide takes you from zero to production.",
-        "name" : "description"
-      }, {
-        "content" : "",
-        "name" : "image"
-      }, {
-        "content" : "The beginner's guide to Angular Universal",
-        "name" : "title"
-      } ],
-      "minRead" : 8,
-      "page" : "/articles/the-beginners-guide-to-angular-universal.js",
-      "pagePath" : "the-beginners-guide-to-angular-universal",
-      "tags" : {
-        "angular" : "Angular",
+      "author": "David East",
+      "date": "September 26th, 2017",
+      "metas": [
+        {
+          "content": "summary_large_image",
+          "name": "card"
+        },
+        {
+          "content": "@_davideast",
+          "name": "site"
+        },
+        {
+          "content": "@_davideast",
+          "name": "creator"
+        },
+        {
+          "content": "This guide takes you from zero to production.",
+          "name": "description"
+        },
+        {
+          "content": "",
+          "name": "image"
+        },
+        {
+          "content": "The beginner's guide to Angular Universal",
+          "name": "title"
+        }
+      ],
+      "minRead": 8,
+      "page": "/articles/the-beginners-guide-to-angular-universal.js",
+      "pagePath": "the-beginners-guide-to-angular-universal",
+      "tags": {
+        "angular": "Angular",
         "ssr": "SSR",
         "express": "Express"
       },
-      "timestamp" : -1506302638249,
-      "title" : "The beginner's guide to Angular Universal",
-      "whyRead" : "This guide takes you from zero to production."
+      "timestamp": -1506302638249,
+      "title": "The beginner's guide to Angular Universal",
+      "whyRead": "This guide takes you from zero to production."
+    },
+    "firebase-bundle-size": {
+      "author": "David East",
+      "date": "May 1st, 2018",
+      "metas": [
+        {
+          "content": "summary_large_image",
+          "name": "card"
+        },
+        {
+          "content": "@_davideast",
+          "name": "site"
+        },
+        {
+          "content": "@_davideast",
+          "name": "creator"
+        },
+        {
+          "content": "This guide takes you from zero to production.",
+          "name": "description"
+        },
+        {
+          "content": "",
+          "name": "image"
+        },
+        {
+          "content": "I dropped 95% of my Firebase bundle size using this one weird trick",
+          "name": "title"
+        }
+      ],
+      "minRead": 8,
+      "page": "/articles/firebase-bundle-size.js",
+      "pagePath": "firebase-bundle-size",
+      "tags": {
+        "firebase": "Firebase",
+        "ssr": "SSR",
+        "webworkers": "Web Workers"
+      },
+      "timestamp": -1996302638249,
+      "title": "I dropped 95% of my Firebase bundle size using this one weird trick",
+      "whyRead": "This guide takes you from zero to production."
     }
   },
   "tagKey": {
@@ -119,6 +167,7 @@
     "essay": "Essay",
     "rollup": "Rollup",
     "angular": "Angular",
-    "ssr": "SSR"
-  }  
+    "ssr": "SSR",
+    "webworkers": "Web Workers"
+  }
 }
