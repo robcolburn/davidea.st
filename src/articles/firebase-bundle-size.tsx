@@ -35,6 +35,21 @@ const Article = (props) => {
       <div class="de-grid de-padding">
         <article class="de-post">
           <section class="de-article-content">
+            <h2 class="de-part-h2-inside">Firebase 🔥</h2>
+            <p>
+              I'm a Developer Advocate for Google on the Firebase team. I have been for over 4 years, an eternity in the tech industry. We have this cloud database called Firestore. We host the database and you interface with it using our JavaScript library. It's awesome. Firestore synchronizes data in realtime and works fully offline. <strong>Fully</strong>. <strong>Offline</strong>.
+            </p>
+
+            <p>
+              These features make Firestore a great tool for building apps on the web. However, there is one problem. <strong>It's not exactly the lightest</strong>.
+            </p>
+          </section>
+        </article>
+      </div>      
+
+      <div class="de-grid de-padding">
+        <article class="de-post">
+          <section class="de-article-content">
             <h2 class="de-part-h2-inside">This is Webpack's fault</h2>
             <p>
               This all started when I was building a Firestore app with Webpack. Webpack has this nifty little notification that informs you if any asset is over 244kb in size.
@@ -52,7 +67,7 @@ const Article = (props) => {
               Webpack was right indeed. This did impact web performance. <strong>Thanks, Webpack</strong>.
             </p>
 
-            <h2 class="de-part-h2-inside">Poor page load performance</h2>
+            <h2 class="de-part-h2-inside">The problem: Poor page load performance</h2>
 
             <p>
               Go a head. Click play. Feel the slowness of my realtime restraunt capacity tracker.
@@ -86,44 +101,42 @@ const Article = (props) => {
         <article class="de-post">
           <section class="de-article-content">
 
-            <h3>~1800ms</h3>
             <p>
-              The HTML loads, but it's useless. It's just an empty document waiting for Preact to render the content. 
+              <strong>The problem is how I'm loading the app.</strong> The user has to wait for the JavaScript bundle <strong>311kbs</strong> (86.5 kbs gzipped) <em>and</em> the subsequent network requests for the app to load.
             </p>
 
-            <h3>~3800ms</h3>
-            <p>
-              Fast forward 1.8 more seconds and the bundle has downloaded, parsed, and executed. When gzipped the bundle size drops to 85.6kb (The browser parses all 311kb however). We're not loaded yet though. At 4 seconds the app is still blank. <em>Why?</em> Because there's no data yet from Firestore. Our trip down the waterfall continues.
-            </p>
-
-            <h3>~7100ms</h3>
-            <p>
-              At 4 seconds the app makes a request to Firestore's servers for data. It's not until 2.6 seconds later that sends data to render the page. That brings us to a full 7.1 seconds just to see how many people are eating at Bamboo Sushi. If I'm downtown, I would have left the page and just walked there myself.
-            </p>
-
-            <h3>Waiting on a 311 kilobyte bundle</h3>
-            <p>
-              I wanted provide users with a realtime experience. I wanted the app work when offline. But all I gave them was a performance mess.
-            </p>
+            <h2 class="de-part-h2-inside">More features, less performance?</h2>
 
             <p>
-              <strong>The problem is how I'm loading the app.</strong> The user has to wait for the JavaScript bundle <strong>311kbs</strong> (86.5 kbs gzipped) <em>and</em> the subsequent network requests for the app to load. 
+              This is the point in the article where you throw your hands up and say <em>"This is why we can't have nice things on the web!"</em> 
             </p>
-
-            <p>
-              At 1.8 seconds I could have had content, instead I had to wait 5.3 more seconds to get data back from Firestore. This sounds like a job for Server Side Rendering.
-            </p>
-
-            <h2 class="de-part-h2-inside">Server Side Rendering, not to the rescue</h2>
-
-            <p>
-              I need the content immediately if I want to get the page loaded quickly. Adding in Server Side Rendering will solve my problems, right? Not so much.
-            </p>
-
             
+            <p>
+              Sometimes it feels like you can't build anything significant on the web without sacrificing page load. Features <code>===</code> code. The more code you ship the slower the page load, right? Not exactly.
+            </p>
+
+            <p>
+              It's not about shipping less code. <strong>It's about shipping less code upfront</strong>.
+            </p>
+            
+            <h2 class="de-part-h2-inside">Progressive loading</h2>
+
+            <p>
+              The main problem is simple. My app isn't complete until Firestore is up and running. This takes too long on slow networks and low powered devices. But you know what takes a lot less time? Loading a static HTML page.
+            </p>
+
+            <p>
+              At 1.8 seconds I could have rendered content. Instead I had to wait 5.3 more seconds to get data back from Firestore. <strong>What if my app didn't need to wait for Firestore to load?</strong> What if I server side render the content and then have Preact and Firestore take over when they load?
+            </p>
 
           </section>
         </article>
+      </div>
+
+      <div class="de-blogimg-frame-full">
+          <img 
+          alt="Firestore page load performance trace"
+          src="/assets/articles/firebase-bundle-size/progressive-loading.png" />
       </div>
 
       <div class="de-grid de-padding">
@@ -156,20 +169,7 @@ const Article = (props) => {
 
       </div>
 
-      {/* <div class="de-grid de-padding">
-        <article class="de-post">
-          <section class="de-article-content">
-            <h2 class="de-part-h2-inside">Firebase 🔥</h2>
-            <p>
-              I'm a Developer Advocate for Google on the Firebase team. I have been for over 4 years, an eternity in the tech industry. We have this cloud database called Firestore. We host the database and you interface with it using our JavaScript library. It's awesome. Firestore synchronizes data in realtime and works fully offline. <strong>Fully</strong>. <strong>Offline</strong>.
-            </p>
 
-            <p>
-              These features make Firestore a great tool for building apps on the web. However, there is one problem. <strong>It's not exactly the lightest</strong>.
-            </p>
-          </section>
-        </article>
-      </div> */}
 
     </div>
   );
