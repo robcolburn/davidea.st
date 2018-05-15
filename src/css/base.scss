@@ -117,10 +117,18 @@ footer {
   font-size: .8em;
 }
 
+.de-idea {
+  border-left: 4px solid #53637c;
+  padding: 0 0.6em;
+}
 
-.de-bigidea {
-  border-left: 4px solid #777;
-  padding: 0 0.4em;
+.de-idea.de-bigidea {
   font-size: 24px;
   line-height: 48px;
+}
+
+.de-idea.de-smallidea {
+  font-size: 18px;
+  line-height: 36px;
+  font-style: italic;
 }
