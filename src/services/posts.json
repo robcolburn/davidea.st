@@ -122,7 +122,7 @@
     },
     "firebase-bundle-size": {
       "author": "David East",
-      "date": "May 1st, 2018",
+      "date": "May 16tb, 2018",
       "metas": [
         {
           "content": "summary_large_image",
@@ -137,7 +137,7 @@
           "name": "creator"
         },
         {
-          "content": "This guide takes you from zero to production.",
+          "content": "This article will change how you write Firebase apps on the web.",
           "name": "description"
         },
         {
@@ -159,7 +159,7 @@
       },
       "timestamp": -1996302638249,
       "title": "I dropped 95% of my Firebase bundle size using this one weird trick",
-      "whyRead": "This guide takes you from zero to production."
+      "whyRead": "This article will change how you write Firebase apps on the web."
     }
   },
   "tagKey": {
