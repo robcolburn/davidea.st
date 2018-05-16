@@ -1,0 +1,41 @@
+{
+  "author": "David East",
+  "date": "May 16th, 2018",
+  "metas": [
+    {
+      "content": "summary_large_image",
+      "name": "card"
+    },
+    {
+      "content": "@_davideast",
+      "name": "site"
+    },
+    {
+      "content": "@_davideast",
+      "name": "creator"
+    },
+    {
+      "content": "This article will change how you write Firebase apps on the web.",
+      "name": "description"
+    },
+    {
+      "content": "https://davidea.st/assets/articles/firebase-bundle-size/bundle-banner.png",
+      "name": "image"
+    },
+    {
+      "content": "I dropped 95% of my Firebase bundle size using this one weird trick",
+      "name": "title"
+    }
+  ],
+  "minRead": 10,
+  "page": "/articles/firebase-bundle-size.js",
+  "pagePath": "firebase-bundle-size",
+  "tags": {
+    "firebase": "Firebase",
+    "ssr": "SSR",
+    "webworkers": "Web Workers"
+  },
+  "timestamp": -1526475399782,
+  "title": "I dropped 95% of my Firebase bundle size using this one weird trick",
+  "whyRead": "This article will change how you build Firebase apps on the web."
+}
