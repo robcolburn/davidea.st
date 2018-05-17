@@ -479,7 +479,7 @@ const Article = (props) => {
 
             <section class="de-idea de-bigidea">
               <p>
-                There's one lesson for writing Web Worker code. Stand <a href="https://twitter.com/dassurma">on the shoulders</a> of those <a href="https://twitter.com/_developit">who came before you</a>. Libraries like <code><a href="https://github.com/GoogleChromeLabs/comlink">Comlink</a></code> and <code><a href="https://github.com/developit/workerize">wokerize</a></code> simplify your worker code.
+                There's one lesson for writing Web Worker code. Stand <a href="https://twitter.com/dassurma">on the shoulders</a> of those <a href="https://twitter.com/_developit">who came before you</a>. Libraries like <code><a href="https://github.com/GoogleChromeLabs/comlink">Comlink</a></code> and <code><a href="https://github.com/developit/workerize">workerize</a></code> simplify your worker code.
               </p>
             </section>
 
